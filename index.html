@@ -1,0 +1,1421 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Alejandro Pavimento PVS Talavera</title>
+<meta name="description" content="Hormigón impreso y pulido en Talavera de la Reina. Patios, entradas, piscinas y naves. Pide presupuesto por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Figtree:ital,wght@0,400..700;1,400&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: toda la web en el mundo del inicio — pizarra oscura con juntas de piedra, fotos en marco de papel (polaroid) y acentos ocre/teja; bandas alternas de pizarra para dar ritmo */
+:root{
+  color-scheme:dark;
+  --bg:#0F1113; --bg-2:#171A1D; --bg-3:#0A0B0D; --raised:#1F2327;
+  --fg:#F2EAE0; --fg-2:#B5AEA4; --line:rgba(242,234,224,.14);
+  --papel:#F5EFE6; --papel-2:#EAE1D3; --papel-fg:#2A201B; --papel-mu:#6A5B50; --papel-line:rgba(42,32,27,.14);
+  --teja:#C0603A; --teja-fg:#FFF7F0; --teja-hover:#A9522F;
+  --ocre:#DDA845; --ocre-fg:#241806;
+  --wa:#1F9D55; --wa-fg:#FFFFFF;
+  --sombra-foto:0 2px 4px rgba(0,0,0,.22), 0 24px 44px -20px rgba(0,0,0,.75);
+
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+
+  --fs-xs:.74rem; --fs-m:1.0625rem;
+  --fs-xl:clamp(1.65rem,2.6vw,2.2rem);
+  --fs-2xl:clamp(2.3rem,5.2vw,4.3rem);
+  --fs-hero:clamp(2.9rem,7.6vw,6.6rem);
+  --r:16px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --gut:clamp(16px,4vw,48px);
+  --max:1240px;
+}
+/* Un solo aspecto oscuro, igual que el inicio, en cualquier tema del visor */
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; interpolate-size:allow-keywords}
+body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:var(--fs-m); line-height:1.6; overflow-x:clip}
+body::after{content:""; position:fixed; inset:0; z-index:99; pointer-events:none; opacity:.07; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%; display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--ocre); outline-offset:3px; border-radius:6px}
+::selection{background:var(--ocre); color:var(--ocre-fg)}
+h1,h2,h3,h4{font-family:var(--f-display); font-optical-sizing:auto; line-height:1.02; margin:0; text-wrap:balance; letter-spacing:-.015em}
+p{margin:0}
+.wrap{max-width:var(--max); margin-inline:auto; padding-inline:var(--gut); position:relative; z-index:1}
+.mono{font-family:var(--f-mono); font-size:var(--fs-xs); letter-spacing:.02em}
+
+/* ---------- Botones ---------- */
+.btn{--b:var(--teja); --c:var(--teja-fg); display:inline-flex; align-items:center; gap:.6em; padding:.9em 1.35em; border-radius:999px; background:var(--b); color:var(--c); text-decoration:none; font-weight:650; font-size:1rem; line-height:1.1; border:0; cursor:pointer; transition:background-color .25s var(--ease), transform .35s var(--ease); white-space:nowrap; will-change:transform}
+.btn svg{width:1.2em; height:1.2em; flex:none}
+.btn:hover{background:var(--teja-hover)}
+.btn:active{transform:scale(.97)}
+.btn--wa{--b:var(--wa); --c:var(--wa-fg)}
+.btn--wa:hover{background:color-mix(in oklab, var(--wa) 86%, #000)}
+.btn--ghost{--b:transparent; --c:currentColor; box-shadow:inset 0 0 0 1.5px currentColor}
+.btn--ghost:hover{background:color-mix(in oklab, currentColor 12%, transparent)}
+.btn--ocre{--b:var(--ocre); --c:var(--ocre-fg)}
+.btn--ocre:hover{background:color-mix(in oklab, var(--ocre) 88%, #000)}
+.btn--s{padding:.62em 1em; font-size:.9rem}
+
+/* ---------- Cabecera ---------- */
+.progress{position:fixed; inset:0 0 auto 0; height:3px; z-index:60; pointer-events:none}
+.progress span{display:block; height:100%; background:linear-gradient(90deg,var(--ocre),var(--teja)); transform-origin:0 50%; transform:scaleX(0)}
+.top{position:fixed; z-index:50; left:0; right:0; top:0; padding:calc(10px + env(safe-area-inset-top,0px)) var(--gut) 0; pointer-events:none}
+.top-in{pointer-events:auto; max-width:var(--max); margin-inline:auto; display:flex; align-items:center; gap:18px; padding:8px 8px 8px 16px; border-radius:999px; background:color-mix(in oklab, var(--bg-3) 78%, transparent); backdrop-filter:blur(14px) saturate(1.3); -webkit-backdrop-filter:blur(14px) saturate(1.3); box-shadow:0 0 0 1px var(--line), 0 10px 30px -18px rgba(0,0,0,.8); transition:transform .45s var(--ease)}
+.top.is-hidden .top-in{transform:translateY(-130%)}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; min-width:0}
+.brand-mark{width:34px; height:34px; flex:none}
+.brand-txt{display:flex; flex-direction:column; line-height:1}
+.brand-name{font-family:var(--f-display); font-weight:780; font-stretch:82%; font-size:1.18rem; letter-spacing:-.01em; white-space:nowrap}
+.brand-sub{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-2); margin-top:3px; white-space:nowrap}
+.nav{display:flex; gap:4px; margin-left:auto}
+.nav a{text-decoration:none; font-weight:600; font-size:.95rem; padding:.55em .85em; border-radius:999px; color:var(--fg-2); transition:color .2s, background-color .2s}
+.nav a:hover,.nav a.is-on{color:var(--fg); background:color-mix(in oklab, var(--fg) 9%, transparent)}
+.top .btn{padding:.7em 1.1em; font-size:.92rem}
+.menu-btn{display:none; width:44px; height:44px; border-radius:50%; border:0; background:var(--fg); color:var(--bg); cursor:pointer; align-items:center; justify-content:center}
+.menu-btn svg{width:20px; height:20px}
+@media (max-width: 1120px){ .nav{display:none} .menu-btn{display:inline-flex} .top .btn{margin-left:auto} }
+@media (max-width: 460px){ .top-in{gap:8px; padding-left:10px} .top .btn span{display:none} .top .btn{padding:.7em; flex:none} .menu-btn{flex:none} .brand{flex:1 1 auto; overflow:hidden} .brand-mark{width:30px; height:30px} .brand-name{font-size:.98rem} }
+.sheet{position:fixed; inset:0; z-index:70; background:var(--bg-3); color:var(--fg); display:flex; flex-direction:column; padding:calc(22px + env(safe-area-inset-top,0px)) var(--gut) calc(28px + env(safe-area-inset-bottom,0px)); clip-path:circle(0 at calc(100% - 44px) 36px); transition:clip-path .65s var(--ease-out); visibility:hidden}
+.sheet.is-open{clip-path:circle(150% at calc(100% - 44px) 36px); visibility:visible}
+.sheet-head{display:flex; justify-content:space-between; align-items:center}
+.sheet-close{width:44px; height:44px; border-radius:50%; border:0; background:var(--fg); color:var(--bg); display:grid; place-items:center; cursor:pointer}
+.sheet-close svg{width:20px;height:20px}
+.sheet nav{display:flex; flex-direction:column; margin-block:auto; gap:2px}
+.sheet nav a{font-family:var(--f-display); font-weight:760; font-stretch:80%; font-size:clamp(2.2rem,11vw,3.6rem); text-decoration:none; line-height:1.08; opacity:0; transform:translateY(24px); transition:opacity .4s, transform .5s var(--ease-out), color .2s}
+.sheet nav a:hover{color:var(--ocre)}
+.sheet.is-open nav a{opacity:1; transform:none}
+.sheet.is-open nav a:nth-child(2){transition-delay:.05s}.sheet.is-open nav a:nth-child(3){transition-delay:.1s}.sheet.is-open nav a:nth-child(4){transition-delay:.15s}.sheet.is-open nav a:nth-child(5){transition-delay:.2s}.sheet.is-open nav a:nth-child(6){transition-delay:.25s}
+.sheet-foot{display:flex; flex-wrap:wrap; gap:10px}
+
+/* ---------- Juntas de piedra (fondo de secciones) ---------- */
+.joints{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+.joints--glow{-webkit-mask-image:radial-gradient(280px circle at var(--mx,72%) var(--my,38%), #000 0%, rgba(0,0,0,.5) 38%, transparent 72%); mask-image:radial-gradient(280px circle at var(--mx,72%) var(--my,38%), #000 0%, rgba(0,0,0,.5) 38%, transparent 72%)}
+
+/* ---------- Inicio ---------- */
+.hero{position:relative; isolation:isolate; background:var(--bg); overflow:hidden; padding-block:calc(112px + env(safe-area-inset-top,0px)) clamp(56px,8vw,104px)}
+.hero::after{content:""; position:absolute; inset:auto 0 0 0; height:40%; z-index:0; background:linear-gradient(to top, color-mix(in oklab, var(--bg) 92%, transparent), transparent); pointer-events:none}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(36px,5vw,80px); align-items:center}
+.kicker{display:inline-flex; align-items:center; gap:10px; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ocre)}
+.kicker::before{content:""; width:28px; height:1.5px; background:currentColor}
+.hero h1{font-size:var(--fs-hero); font-weight:800; font-stretch:78%; line-height:.9; letter-spacing:-.025em; margin-top:22px}
+.hero h1 .ln{display:block; overflow:hidden; padding-bottom:.2em; margin-bottom:-.2em}
+.hero h1 .ln > span{display:inline-block; animation:lnUp 1s var(--ease-out) both}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.09s}
+.hero h1 .ln:nth-child(3) > span{animation-delay:.18s}
+.hero h1 em{font-style:normal; color:var(--ocre); position:relative; white-space:nowrap}
+.hero h1 em svg{position:absolute; left:-2%; bottom:-.12em; width:104%; height:.26em; overflow:visible}
+.hero h1 em path{fill:none; stroke:var(--teja); stroke-width:7; stroke-linecap:round; stroke-dasharray:420; stroke-dashoffset:420; animation:draw 1.1s .85s var(--ease-out) forwards}
+@keyframes lnUp{from{transform:translateY(105%)} to{transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-lead{max-width:34em; margin-top:26px; font-size:clamp(1.05rem,1.4vw,1.22rem); color:color-mix(in oklab, var(--fg) 82%, var(--bg)); animation:fadeUp .9s .35s var(--ease-out) both}
+.hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; animation:fadeUp .9s .48s var(--ease-out) both}
+.hero-facts{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:38px; padding-top:22px; border-top:1px solid var(--line); animation:fadeUp .9s .6s var(--ease-out) both}
+.fact{display:flex; align-items:center; gap:10px; font-size:.95rem; color:var(--fg-2)}
+.fact svg{width:20px; height:20px; color:var(--ocre); flex:none}
+.fact b{color:var(--fg); font-weight:650}
+.fact .copy-num{font-family:var(--f-mono); font-size:.86rem; color:var(--fg); text-decoration:none; border-bottom:1.5px dashed var(--ocre); transition:color .2s}
+.fact .copy-num:hover{color:var(--ocre)}
+@keyframes fadeUp{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
+
+/* Fotos con marco de papel */
+.collage{position:relative; width:100%; max-width:560px; margin-inline:auto; aspect-ratio:1/1.04}
+.ph{position:absolute; margin:0; background:var(--papel); padding:7px 7px 30px; border-radius:6px; box-shadow:var(--sombra-foto); rotate:var(--rot,0deg); translate:var(--tx,0px) var(--ty,0px); transition:rotate .5s var(--ease), scale .5s var(--ease), box-shadow .5s; animation:press 1.05s var(--ease-out) both; cursor:zoom-in}
+.ph img{width:100%; height:100%; object-fit:cover; border-radius:3px; aspect-ratio:var(--ar,4/3)}
+.ph figcaption{position:absolute; left:10px; right:10px; bottom:8px; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.04em; color:var(--papel-mu); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ph:hover{rotate:0deg; scale:1.045; z-index:9!important; box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.ph--1{left:2%; top:9%; width:61%; --rot:-4deg; --ar:4/3; z-index:2; animation-delay:.2s}
+.ph--2{right:0; top:0; width:37%; --rot:5deg; --ar:489/900; z-index:3; animation-delay:.32s}
+.ph--3{left:0; bottom:3%; width:45%; --rot:3.5deg; --ar:1/1; z-index:4; animation-delay:.44s}
+.ph--4{right:7%; bottom:0; width:35%; --rot:-6deg; --ar:3/4; z-index:5; animation-delay:.56s}
+@keyframes press{from{opacity:0; scale:1.18; filter:blur(10px)} 60%{filter:blur(0)} to{opacity:1; scale:1; filter:none}}
+.badge{position:absolute; z-index:7; left:51%; top:47%; width:clamp(96px,13vw,128px); aspect-ratio:1; translate:-50% -50%; border-radius:50%; background:var(--ocre); color:var(--ocre-fg); display:grid; place-items:center; box-shadow:0 14px 30px -10px rgba(0,0,0,.6); animation:pop .8s .9s var(--ease-out) both}
+.badge svg.ring{position:absolute; inset:6%; width:88%; height:88%; animation:spin 22s linear infinite}
+.badge text{font-family:var(--f-mono); font-size:9.6px; letter-spacing:.14em; text-transform:uppercase; fill:currentColor; font-weight:500}
+.badge .brand-mark{width:38%; height:38%}
+@keyframes spin{to{rotate:360deg}}
+@keyframes pop{from{opacity:0; scale:.4} to{opacity:1; scale:1}}
+@media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} .collage{max-width:460px} }
+
+/* ---------- Bandas cruzadas ---------- */
+.bands{position:relative; height:clamp(120px,14vw,170px); overflow:hidden; background:linear-gradient(var(--bg) 50%, var(--bg-2) 50%); display:grid; place-items:center}
+.marquee{position:absolute; left:-5%; right:-5%; overflow:hidden; padding-block:16px; box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.m1{background:var(--teja); color:var(--teja-fg); rotate:-2.4deg; z-index:2}
+.m2{background:var(--ocre); color:var(--ocre-fg); rotate:2.2deg; z-index:1; padding-block:11px}
+.mq-track{display:flex; align-items:center; width:max-content; animation:mq 46s linear infinite}
+.mq-track.rev{animation-direction:reverse; animation-duration:60s}
+.mq-track span{font-family:var(--f-display); font-weight:740; font-stretch:76%; font-size:clamp(1.4rem,3vw,2.4rem); text-transform:uppercase; letter-spacing:.01em; padding-inline:22px; white-space:nowrap; line-height:1}
+.m2 .mq-track span{font-family:var(--f-mono); font-weight:500; font-size:clamp(.8rem,1.3vw,1rem); letter-spacing:.14em}
+.mq-track i{width:24px; height:24px; flex:none; background:currentColor; opacity:.8; -webkit-mask:var(--glyph) center/contain no-repeat; mask:var(--glyph) center/contain no-repeat}
+.m2 .mq-track i{width:14px; height:14px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Secciones ---------- */
+.sec{padding-block:clamp(72px,10vw,136px); position:relative; overflow:hidden; isolation:isolate}
+.sec--2{background:var(--bg-2)}
+.sec--3{background:var(--bg-3)}
+.sec--teja{background:var(--teja); color:var(--teja-fg)}
+.sec::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:radial-gradient(60% 50% at 12% 0%, color-mix(in oklab, var(--ocre) 9%, transparent), transparent 70%), radial-gradient(50% 40% at 100% 100%, color-mix(in oklab, var(--teja) 8%, transparent), transparent 70%)}
+.sec-head{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:24px 56px; align-items:end; margin-bottom:clamp(36px,5vw,60px)}
+.sec-head h2{font-size:var(--fs-2xl); font-weight:790; font-stretch:80%; margin-top:14px}
+.sec-head p{color:var(--fg-2); max-width:36em}
+.sec--teja .sec-head p{color:color-mix(in oklab, var(--teja-fg) 82%, var(--teja))}
+@media (max-width: 820px){ .sec-head{grid-template-columns:1fr} }
+.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ocre); display:inline-flex; align-items:center; gap:10px}
+.eyebrow::before{content:""; width:28px; height:1.5px; background:currentColor}
+.sec--teja .eyebrow{color:var(--teja-fg)}
+.bigword{position:absolute; z-index:0; top:clamp(24px,5vw,60px); right:-2vw; font-family:var(--f-display); font-weight:800; font-stretch:75%; font-size:clamp(6rem,22vw,20rem); line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px color-mix(in oklab, var(--fg) 10%, transparent); white-space:nowrap; pointer-events:none; user-select:none}
+
+/* Animaciones ligadas al scroll (si el navegador las soporta) */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .rv{animation:rv linear both; animation-timeline:view(); animation-range:entry 0% cover 30%}
+    .bigword{animation:drift linear both; animation-timeline:view(); animation-range:cover 0% cover 100%}
+    .lema-img img{animation:lemaPar linear both; animation-timeline:view(); animation-range:cover 0% cover 100%}
+  }
+}
+@keyframes rv{from{translate:0 56px; scale:.965} to{translate:0 0; scale:1}}
+@keyframes drift{from{translate:8vw 0} to{translate:-14vw 0}}
+@keyframes lemaPar{from{translate:0 -12%} to{translate:0 12%}}
+
+/* ---------- Galería (fotos en marco de papel) ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px}
+.chip{display:inline-flex; align-items:center; gap:8px; border:0; cursor:pointer; padding:.62em 1.05em; border-radius:999px; background:color-mix(in oklab, var(--fg) 7%, transparent); color:var(--fg); font-weight:600; font-size:.92rem; box-shadow:inset 0 0 0 1px var(--line); transition:background-color .25s, color .25s, transform .25s var(--ease)}
+.chip small{font-family:var(--f-mono); font-size:.66rem; opacity:.7}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:var(--papel); color:var(--papel-fg); box-shadow:none}
+.gal{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-auto-rows:clamp(170px,18vw,240px); grid-auto-flow:dense; gap:clamp(14px,1.8vw,24px)}
+.gi{position:relative; display:flex; flex-direction:column; padding:7px 7px 0; border:0; margin:0; border-radius:6px; cursor:zoom-in; background:var(--papel); color:var(--papel-fg); box-shadow:var(--sombra-foto); rotate:var(--rot,0deg); transition:rotate .5s var(--ease), scale .5s var(--ease), box-shadow .5s; text-align:left; min-width:0}
+.gi:nth-child(3n+1){--rot:-1.2deg}.gi:nth-child(3n+2){--rot:.9deg}.gi:nth-child(5n){--rot:-.5deg}
+.gi.t{grid-row:span 2}
+.gi.w{grid-column:span 2}
+.gi.b{grid-column:span 2; grid-row:span 2}
+.gi .im{flex:1; min-height:0; overflow:hidden; border-radius:3px; background:var(--papel-2)}
+.gi img{width:100%; height:100%; object-fit:cover; transition:scale .9s var(--ease-out)}
+.gi .cap{display:flex; align-items:center; gap:8px; height:30px; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.03em; color:var(--papel-mu); white-space:nowrap; overflow:hidden}
+.gi .cap span{overflow:hidden; text-overflow:ellipsis}
+.gi .cap b{flex:none; font-weight:500; color:var(--teja); text-transform:uppercase; letter-spacing:.08em}
+.gi:hover,.gi:focus-visible{rotate:0deg; scale:1.035; z-index:3; box-shadow:0 34px 60px -24px rgba(0,0,0,.85)}
+.gi:hover img{scale:1.07}
+.gal-more{display:flex; justify-content:center; margin-top:36px}
+@media (max-width: 900px){ .gal{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width: 600px){ .gal{grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:170px; gap:12px} .gi .cap b{display:none} }
+
+/* ---------- Franja con el lema ---------- */
+.lema{position:relative; isolation:isolate; overflow:hidden; min-height:clamp(380px,48vw,600px); display:grid; align-items:end}
+.lema-img{position:absolute; inset:0; z-index:-2}
+.lema-img img{width:100%; height:124%; margin-top:-12%; object-fit:cover}
+.lema::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to top, rgba(12,13,15,.92) 8%, rgba(12,13,15,.35) 55%, rgba(12,13,15,.15)), linear-gradient(to right, rgba(12,13,15,.55), transparent 60%)}
+.lema .wrap{padding-block:clamp(48px,7vw,88px); width:100%}
+.lema blockquote{margin:16px 0 0; font-family:var(--f-display); font-weight:800; font-stretch:78%; font-size:clamp(2.4rem,6.4vw,5.6rem); line-height:.92; letter-spacing:-.025em; max-width:12ch; color:#F7F0E6}
+.lema blockquote em{font-style:normal; color:var(--ocre)}
+.lema p.mono{margin-top:22px; color:#D9CFC2; text-transform:uppercase; letter-spacing:.12em}
+
+/* ---------- Muestrario de acabados ---------- */
+.sim{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:clamp(28px,4vw,56px); align-items:start}
+.sim-frame{background:var(--papel); padding:9px 9px 0; border-radius:8px; box-shadow:var(--sombra-foto); rotate:-.8deg}
+.sim-stage{position:relative; border-radius:4px; overflow:hidden; background:#3A3D40; aspect-ratio:3/2; touch-action:pan-y}
+.sim-stage canvas{width:100%; height:100%; display:block}
+.sim-cap{display:flex; justify-content:space-between; align-items:center; gap:10px; height:40px; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.04em; color:var(--papel-mu); overflow:hidden; white-space:nowrap}
+.sim-cap b{font-weight:500; color:var(--teja); text-transform:uppercase; letter-spacing:.1em}
+.sim-again{position:absolute; right:12px; bottom:12px; z-index:2}
+.sim-pip{position:absolute; left:12px; bottom:12px; z-index:2; display:flex; align-items:center; gap:8px; padding:5px 12px 5px 5px; border:0; cursor:zoom-in; border-radius:10px; background:rgba(14,16,18,.72); color:#F2EAE0; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); font-size:.8rem; font-weight:600; transition:transform .3s var(--ease)}
+.sim-pip:hover{transform:translateY(-2px)}
+.sim-pip img{width:54px; height:40px; object-fit:cover; border-radius:6px}
+.sim-ctrl{display:grid; gap:20px; margin-top:28px}
+.ctrl-row{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
+.ctrl-row > .mono{width:100%; color:var(--fg-2); text-transform:uppercase; letter-spacing:.1em; font-size:.66rem}
+.opt{display:inline-flex; align-items:center; gap:9px; border:0; cursor:pointer; padding:.42em .95em .42em .42em; border-radius:999px; background:var(--raised); color:var(--fg); font-weight:600; font-size:.9rem; box-shadow:inset 0 0 0 1px var(--line); transition:background-color .2s, box-shadow .2s, transform .2s var(--ease)}
+.opt:hover{transform:translateY(-2px)}
+.opt[aria-checked="true"]{background:var(--papel); color:var(--papel-fg); box-shadow:0 10px 22px -12px rgba(0,0,0,.7)}
+.opt img{width:30px; height:30px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+.opt[aria-checked="true"] img{box-shadow:0 0 0 2px var(--ocre)}
+.sim-info h3{font-size:var(--fs-xl); font-weight:770; font-stretch:82%}
+.sim-info .tone{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ocre); margin-top:10px}
+.sim-info > p{color:var(--fg-2); margin-top:12px}
+.sim-sub{margin-top:24px; color:var(--fg-2); text-transform:uppercase; letter-spacing:.1em; font-size:.66rem}
+.sample{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px}
+.sample button{padding:0; border:0; border-radius:50%; aspect-ratio:1; overflow:hidden; cursor:pointer; box-shadow:0 0 0 2px var(--line), 0 12px 24px -12px rgba(0,0,0,.8); transition:transform .35s var(--ease), box-shadow .3s; animation:thumbIn .55s var(--ease-out) both; background:var(--raised)}
+.sample button:nth-child(2){animation-delay:.06s}.sample button:nth-child(3){animation-delay:.12s}.sample button:nth-child(4){animation-delay:.18s}
+.sample button:hover{transform:translateY(-4px) rotate(-6deg)}
+.sample button[aria-checked="true"]{box-shadow:0 0 0 3px var(--ocre), 0 12px 24px -12px rgba(0,0,0,.8)}
+.sample img{width:100%; height:100%; object-fit:cover}
+@keyframes thumbIn{from{opacity:0; transform:translateY(12px) scale(.9)} to{opacity:1; transform:none}}
+.sim-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.sim-note{margin-top:16px; font-size:.82rem; color:var(--fg-2)}
+@media (max-width: 960px){ .sim{grid-template-columns:1fr} .sim-frame{rotate:0deg} }
+
+/* ---------- Proceso ---------- */
+.proc{background:var(--bg-3); position:relative; isolation:isolate; overflow:clip}
+.proc-sticky{padding-block:clamp(72px,10vw,120px); position:relative}
+.proc-track{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:22px}
+.step{position:relative; background:var(--papel); color:var(--papel-fg); border-radius:8px; padding:8px; display:flex; flex-direction:column; box-shadow:var(--sombra-foto); rotate:var(--rot,0deg)}
+.step:nth-child(odd){--rot:-1deg}.step:nth-child(even){--rot:1.2deg}
+.step-img{aspect-ratio:4/3; overflow:hidden; border-radius:4px}
+.step-img img{width:100%; height:100%; object-fit:cover}
+.step-body{padding:16px 12px 14px; display:flex; flex-direction:column; gap:10px; flex:1}
+.step-n{position:absolute; top:-14px; left:-10px; width:50px; height:50px; border-radius:50%; background:var(--ocre); color:var(--ocre-fg); display:grid; place-items:center; font-family:var(--f-display); font-weight:800; font-size:1.4rem; box-shadow:0 10px 20px -8px rgba(0,0,0,.7); z-index:2}
+.step h3{font-size:1.4rem; font-weight:760; font-stretch:86%}
+.step p{color:var(--papel-mu); font-size:.96rem}
+.chips{display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0; list-style:none}
+.chips li{font-size:.8rem; padding:.3em .72em; border-radius:999px; background:rgba(42,32,27,.08); color:var(--papel-fg)}
+.step .chips{margin-top:auto; padding-top:4px}
+.proc-bar{height:4px; border-radius:4px; background:var(--line); margin-top:26px; overflow:hidden; display:none}
+.proc-bar span{display:block; height:100%; background:linear-gradient(90deg,var(--ocre),var(--teja)); transform-origin:0 50%; transform:scaleX(0)}
+.proc-hint{display:none; align-items:center; gap:8px; color:var(--fg-2); font-size:.85rem; margin-top:10px}
+.proc-hint svg{width:18px; height:18px}
+@media (max-width: 1100px){ .proc-track{grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px} .step:last-child{grid-column:span 2} }
+@media (max-width: 640px){ .proc-track{grid-template-columns:1fr} .step:last-child{grid-column:auto} }
+.proc.is-pinned .proc-sticky{position:sticky; top:0; height:100vh; height:100svh; display:flex; flex-direction:column; justify-content:center; overflow:hidden; padding-block:84px 20px}
+.proc.is-pinned .sec-head{margin-bottom:30px}
+.proc.is-pinned .sec-head h2{font-size:clamp(2rem,3.6vw,3.3rem)}
+.proc.is-pinned .proc-track{display:flex; gap:34px; width:max-content; will-change:transform; padding:14px 10px 18px}
+.proc.is-pinned .step{width:min(380px,28vw); flex:none}
+.proc.is-pinned .step:last-child{grid-column:auto}
+.proc.is-pinned .step-img{aspect-ratio:16/10}
+.proc.is-pinned .proc-bar{display:block}
+.proc.is-pinned .proc-hint{display:flex}
+
+/* ---------- Nosotros ---------- */
+.nos{display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr); gap:clamp(36px,5vw,80px); align-items:center}
+.collage2{position:relative; width:100%; max-width:540px; aspect-ratio:1/1.05; margin-inline:auto}
+.collage2 .ph{animation:none}
+.c2-1{left:0; top:3%; width:66%; --rot:-3deg; --ar:800/370; z-index:2}
+.c2-2{right:0; top:12%; width:38%; --rot:4.5deg; --ar:3/4; z-index:3}
+.c2-3{left:5%; bottom:2%; width:42%; --rot:2.5deg; --ar:3/4; z-index:4}
+.c2-4{right:3%; bottom:8%; width:52%; --rot:-4deg; --ar:800/370; z-index:5}
+.stamp{position:absolute; z-index:7; left:52%; top:47%; translate:-50% -50%; rotate:-8deg; padding:.6em 1em; border:2.5px solid var(--ocre); color:var(--ocre); border-radius:10px; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; background:color-mix(in oklab, var(--bg-2) 82%, transparent); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); white-space:nowrap; box-shadow:0 10px 24px -10px rgba(0,0,0,.7)}
+.nos h2{font-size:var(--fs-2xl); font-weight:790; font-stretch:80%; margin-top:14px}
+.nos-lead{color:var(--fg-2); margin-top:18px; max-width:34em; font-size:1.08rem}
+.vals{list-style:none; padding:0; margin:30px 0 0; display:grid; gap:12px}
+.vals li{display:flex; gap:16px; align-items:flex-start; padding:16px 18px; border-radius:14px; background:color-mix(in oklab, var(--fg) 5%, transparent); box-shadow:inset 0 0 0 1px var(--line)}
+.vals i{width:42px; height:42px; border-radius:50%; flex:none; display:grid; place-items:center; background:color-mix(in oklab, var(--ocre) 18%, transparent); color:var(--ocre)}
+.vals i svg{width:20px; height:20px}
+.vals b{display:block; font-family:var(--f-display); font-weight:720; font-stretch:88%; font-size:1.18rem}
+.vals span{color:var(--fg-2); font-size:.95rem}
+@media (max-width: 900px){ .nos{grid-template-columns:1fr} .collage2{max-width:440px} }
+
+/* ---------- Vídeos ---------- */
+.vids{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:24px 18px; perspective:900px}
+.vid{position:relative; display:flex; flex-direction:column; padding:6px 6px 0; border-radius:6px; text-decoration:none; background:var(--papel); color:var(--papel-fg); box-shadow:var(--sombra-foto); rotate:var(--rot,0deg); transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transition:transform .5s var(--ease), box-shadow .5s, rotate .5s var(--ease)}
+.vid:nth-child(odd){--rot:-1.4deg}.vid:nth-child(even){--rot:1.1deg}
+.vid.is-tilt{transition:transform .08s linear, box-shadow .5s, rotate .5s var(--ease)}
+.vid:hover{rotate:0deg; box-shadow:0 30px 50px -22px rgba(0,0,0,.85); z-index:2}
+.vid .im{position:relative; aspect-ratio:3/4; overflow:hidden; border-radius:3px}
+.vid img{width:100%; height:100%; object-fit:cover; transition:scale .8s var(--ease-out)}
+.vid:hover img{scale:1.06}
+.vid .im::after{content:""; position:absolute; inset:0; background:radial-gradient(240px circle at var(--gx,50%) var(--gy,0%), rgba(255,255,255,.25), transparent 60%); opacity:0; transition:opacity .4s}
+.vid:hover .im::after{opacity:1}
+.vid .tt{position:absolute; z-index:3; top:8px; right:8px; width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.55); color:#fff; display:grid; place-items:center}
+.vid .tt svg{width:14px; height:14px}
+.vid .play{position:absolute; z-index:3; left:50%; top:50%; width:52px; height:52px; translate:-50% -50%; border-radius:50%; background:rgba(255,255,255,.92); color:#111; display:grid; place-items:center; scale:.6; opacity:0; transition:scale .45s var(--ease), opacity .3s}
+.vid .play svg{width:22px; height:22px; margin-left:3px}
+.vid:hover .play,.vid:focus-visible .play{scale:1; opacity:1}
+.vid .lbl{display:block; padding:8px 4px 10px; font-family:var(--f-mono); font-size:.6rem; line-height:1.35; letter-spacing:.02em; color:var(--papel-mu); min-height:44px}
+.vids-foot{display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; margin-top:36px}
+.vids-foot p{color:var(--fg-2)}
+@media (max-width: 1100px){ .vids{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (max-width: 700px){
+  .vids{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:12px var(--gut) 18px; margin-inline:calc(var(--gut) * -1); scrollbar-width:thin}
+  .vid{flex:0 0 58%; scroll-snap-align:start}
+}
+
+/* ---------- Vídeo de obras ---------- */
+.reel-wrap{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(36px,6vw,96px); align-items:center}
+.reel-phone{position:relative; width:min(100%,360px); margin-inline:auto; aspect-ratio:9/16; border-radius:34px; padding:10px; background:linear-gradient(145deg,#2E3237,#14171A); box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 50px 90px -40px rgba(0,0,0,.9), inset 0 0 0 2px rgba(255,255,255,.05); rotate:-2.5deg}
+.reel-phone video{width:100%; height:100%; object-fit:cover; border-radius:26px; display:block; background:#1d2023}
+.reel-phone::before{content:""; position:absolute; top:20px; left:50%; translate:-50% 0; width:76px; height:7px; border-radius:6px; background:rgba(0,0,0,.55); z-index:2}
+.reel-toggle{position:absolute; right:22px; bottom:22px; z-index:3; width:46px; height:46px; border-radius:50%; border:0; cursor:pointer; display:grid; place-items:center; background:rgba(14,16,18,.6); color:#fff; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); transition:transform .3s var(--ease), background-color .2s}
+.reel-toggle:hover{transform:scale(1.08); background:rgba(14,16,18,.8)}
+.reel-toggle svg{width:18px; height:18px}
+.reel-rec{position:absolute; left:22px; top:38px; z-index:3; display:inline-flex; align-items:center; gap:8px; padding:.4em .8em; border-radius:999px; background:rgba(14,16,18,.55); color:#F2EAE0; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px)}
+.reel-rec i{width:8px; height:8px; border-radius:50%; background:var(--teja); animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.reel-txt h2{font-size:var(--fs-2xl); font-weight:790; font-stretch:80%; margin-top:14px}
+.reel-txt > p{color:var(--fg-2); margin-top:16px; max-width:34em}
+.reel-list{list-style:none; padding:0; margin:28px 0 0; display:grid; gap:10px; counter-reset:r}
+.reel-list li{position:relative; display:flex; flex-direction:column; gap:2px; padding:14px 18px 14px 58px; border-radius:14px; cursor:pointer; background:color-mix(in oklab, var(--fg) 5%, transparent); box-shadow:inset 0 0 0 1px var(--line); transition:background-color .3s, box-shadow .3s, transform .3s var(--ease); counter-increment:r}
+.reel-list li::before{content:counter(r); position:absolute; left:16px; top:50%; translate:0 -50%; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-family:var(--f-mono); font-size:.72rem; background:var(--raised); color:var(--fg-2); transition:background-color .3s, color .3s}
+.reel-list li::after{content:""; position:absolute; left:18px; right:18px; bottom:0; height:2px; border-radius:2px; background:linear-gradient(90deg,var(--ocre),var(--teja)); transform:scaleX(0); transform-origin:0 50%}
+.reel-list li.is-on{background:color-mix(in oklab, var(--ocre) 12%, transparent); box-shadow:inset 0 0 0 1px color-mix(in oklab, var(--ocre) 45%, transparent)}
+.reel-list li.is-on::before{background:var(--ocre); color:var(--ocre-fg)}
+.reel-list li.is-on::after{animation:fillbar 3.6s linear forwards}
+.reel-list li:hover{transform:translateX(4px)}
+.reel-list b{font-family:var(--f-display); font-weight:720; font-stretch:88%; font-size:1.15rem}
+.reel-list span{color:var(--fg-2); font-size:.92rem}
+@keyframes fillbar{to{transform:scaleX(1)}}
+@media (max-width: 860px){ .reel-wrap{grid-template-columns:1fr} .reel-phone{width:min(78vw,330px); rotate:0deg} }
+
+/* ---------- Opiniones ---------- */
+.ops-bg{position:absolute; inset:0; z-index:-2}
+.ops-bg img{width:100%; height:100%; object-fit:cover; filter:grayscale(.2) contrast(1.05)}
+.ops::after{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, color-mix(in oklab, var(--teja) 74%, transparent), color-mix(in oklab, var(--teja) 90%, #000) 85%)}
+.ops::before{display:none}
+.quotes{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2.4vw,28px)}
+.q{position:relative; margin:0; padding:30px 26px 26px; border-radius:var(--r); background:rgba(255,255,255,.1); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:inset 0 0 0 1px rgba(255,255,255,.22), 0 30px 50px -30px rgba(0,0,0,.6); display:flex; flex-direction:column; gap:20px}
+.q:nth-child(2){translate:0 26px}
+.q svg{width:38px; height:38px; opacity:.85}
+.q blockquote{margin:0; font-family:var(--f-display); font-weight:560; font-stretch:92%; font-size:clamp(1.18rem,1.7vw,1.42rem); line-height:1.28}
+.q figcaption{margin-top:auto; display:flex; align-items:center; gap:12px; font-weight:650}
+.q figcaption span{display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--teja-fg); color:var(--teja); font-family:var(--f-display); font-weight:800}
+.q figcaption small{display:block; font-weight:500; opacity:.78; font-size:.82rem}
+.src{margin-top:44px; font-size:.84rem; color:color-mix(in oklab, var(--teja-fg) 80%, var(--teja))}
+.src a{font-weight:650}
+@media (max-width: 900px){ .quotes{grid-template-columns:1fr; max-width:620px} .q:nth-child(2){translate:none} }
+
+/* ---------- Contacto ---------- */
+.contact{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(28px,4vw,56px); align-items:start}
+.cards{display:grid; gap:12px}
+.cc{display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; padding:16px 18px; border-radius:14px; background:color-mix(in oklab, var(--raised) 80%, transparent); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); box-shadow:inset 0 0 0 1px var(--line), 0 18px 30px -24px rgba(0,0,0,.8)}
+.cc-ic{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:color-mix(in oklab, var(--ocre) 18%, transparent); color:var(--ocre); flex:none}
+.cc-ic svg{width:20px; height:20px}
+.cc-main{flex:1; min-width:150px}
+.cc-main small{display:block; color:var(--fg-2); font-size:.78rem}
+.cc-main b,.cc-main .num{font-family:var(--f-mono); font-weight:500; font-size:1rem; overflow-wrap:anywhere}
+.cc-main .num{display:inline-block; text-decoration:none; color:var(--fg); border-bottom:1.5px dashed var(--ocre); padding-bottom:1px; transition:color .2s}
+.cc-main .num:hover{color:var(--ocre)}
+.cc-act{display:flex; gap:6px; flex-wrap:wrap}
+.ib{display:inline-flex; align-items:center; gap:6px; height:38px; padding:0 12px; border-radius:999px; border:0; cursor:pointer; text-decoration:none; font-size:.84rem; font-weight:650; background:var(--bg); color:var(--fg); box-shadow:inset 0 0 0 1px var(--line); transition:background-color .2s, color .2s, transform .2s var(--ease)}
+.ib:hover{transform:translateY(-2px); background:var(--fg); color:var(--bg)}
+.ib svg{width:16px; height:16px}
+.ib--wa{background:var(--wa); color:var(--wa-fg); box-shadow:none}
+.ib--wa:hover{background:color-mix(in oklab, var(--wa) 85%, #000); color:var(--wa-fg)}
+.contact-note{margin-top:14px; font-size:.82rem; color:var(--fg-2)}
+.form{background:var(--papel); color:var(--papel-fg); border-radius:10px; padding:clamp(20px,3vw,32px); box-shadow:0 40px 80px -40px rgba(0,0,0,.9); rotate:.6deg}
+.form h3{font-size:var(--fs-xl); font-weight:780; font-stretch:82%}
+.form > p{color:var(--papel-mu); margin-top:8px; font-size:.95rem}
+.fgrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:22px}
+.field{display:flex; flex-direction:column; gap:6px; min-width:0}
+.field.full{grid-column:1/-1}
+.field label,.field .lab{font-size:.8rem; font-weight:650; color:var(--papel-mu)}
+.field input,.field select,.field textarea{width:100%; border:0; border-radius:10px; padding:.8em .9em; background:var(--papel-2); color:var(--papel-fg); box-shadow:inset 0 0 0 1px var(--papel-line); transition:box-shadow .2s; color-scheme:light}
+.field input::placeholder,.field textarea::placeholder{color:#8E8074}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none; box-shadow:inset 0 0 0 2px var(--teja)}
+.field textarea{min-height:84px; resize:vertical}
+.pills{display:flex; flex-wrap:wrap; gap:6px}
+.pills label{cursor:pointer; position:relative}
+.pills input{position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; pointer-events:none}
+.pills span{display:inline-block; padding:.5em .85em; border-radius:999px; background:var(--papel-2); box-shadow:inset 0 0 0 1px var(--papel-line); font-size:.86rem; font-weight:600; color:var(--papel-fg); transition:background-color .2s, color .2s}
+.pills input:checked + span{background:var(--papel-fg); color:var(--papel); box-shadow:none}
+.pills input:focus-visible + span{outline:3px solid var(--ocre); outline-offset:2px}
+.preview{margin-top:20px; background:#E4D9C8; border-radius:14px; padding:16px; background-image:radial-gradient(rgba(42,32,27,.08) 1px, transparent 1px); background-size:14px 14px}
+.preview .mono{color:var(--papel-mu); text-transform:uppercase; letter-spacing:.1em; font-size:.62rem}
+.bubble{margin-top:8px; margin-left:auto; max-width:92%; background:#D8F5C5; color:#14210F; border-radius:12px 12px 2px 12px; padding:10px 12px 8px; font-size:.92rem; line-height:1.45; white-space:pre-wrap; overflow-wrap:anywhere; box-shadow:0 1px 1px rgba(0,0,0,.12)}
+.bubble time{display:block; text-align:right; font-size:.68rem; color:#4F6A44; margin-top:2px}
+.send{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:18px}
+.send .btn--ghost{color:var(--papel-fg)}
+@media (max-width: 980px){ .contact{grid-template-columns:1fr} .form{rotate:0deg} }
+@media (max-width: 520px){ .fgrid{grid-template-columns:1fr} }
+
+/* ---------- Pie ---------- */
+.foot{background:var(--bg-3); padding-block:56px calc(40px + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); overflow:hidden}
+.foot-word{font-family:var(--f-display); font-weight:800; font-stretch:75%; font-size:var(--fw-size,clamp(2.4rem,11vw,11rem)); line-height:.85; letter-spacing:-.03em; white-space:nowrap; display:flex}
+.foot-word span{display:inline-block; transition:translate .5s var(--ease), color .3s}
+.foot-word span:hover{translate:0 -.08em; color:var(--ocre)}
+.foot-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; margin-top:34px; padding-top:22px; border-top:1px solid var(--line); color:var(--fg-2); font-size:.9rem}
+.foot-row nav{display:flex; flex-wrap:wrap; gap:6px 18px}
+.foot-row a{text-decoration:none}
+.foot-row a:hover{color:var(--ocre)}
+
+/* ---------- Botón flotante ---------- */
+.fab{position:fixed; z-index:45; right:calc(16px + env(safe-area-inset-right,0px)); bottom:calc(16px + env(safe-area-inset-bottom,0px)); width:60px; height:60px; border-radius:50%; background:var(--wa); color:#fff; display:grid; place-items:center; box-shadow:0 14px 30px -10px rgba(0,0,0,.55); transition:transform .5s var(--ease), opacity .3s; text-decoration:none}
+.fab svg{width:30px; height:30px}
+.fab::before{content:""; position:absolute; inset:0; border-radius:50%; background:var(--wa); z-index:-1; animation:ping 2.6s var(--ease-out) infinite}
+.fab-tip{position:absolute; right:72px; white-space:nowrap; background:var(--papel); color:var(--papel-fg); padding:.5em .85em; border-radius:999px; font-size:.84rem; font-weight:650; opacity:0; translate:8px 0; transition:opacity .3s, translate .4s var(--ease); pointer-events:none}
+.fab:hover .fab-tip{opacity:1; translate:0 0}
+.fab.is-away{transform:scale(0); opacity:0; pointer-events:none}
+@keyframes ping{0%{opacity:.5; scale:1} 80%,100%{opacity:0; scale:1.7}}
+
+/* ---------- Visor de fotos ---------- */
+.lb{position:fixed; inset:0; z-index:90; display:grid; grid-template-rows:auto 1fr auto; background:rgba(10,10,11,.95); color:#F2EAE0; padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px)); opacity:0; transition:opacity .35s}
+.lb.is-open{opacity:1}
+.lb-top{display:flex; justify-content:space-between; align-items:center; gap:12px}
+.lb-count{font-family:var(--f-mono); font-size:.75rem; color:#B9AEA2}
+.lb-x,.lb-nav{width:46px; height:46px; border-radius:50%; border:0; cursor:pointer; background:rgba(255,255,255,.1); color:#fff; display:grid; place-items:center; transition:background-color .2s}
+.lb-x:hover,.lb-nav:hover{background:rgba(255,255,255,.22)}
+.lb-x svg,.lb-nav svg{width:20px; height:20px}
+.lb-stage{position:relative; display:grid; place-items:center; min-height:0; touch-action:pan-y}
+.lb-stage img{max-width:min(100%,1100px); max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:6px; box-shadow:0 30px 80px -30px #000; transform-origin:center; border:7px solid var(--papel)}
+.lb-prev{position:absolute; left:0; top:50%; translate:0 -50%}
+.lb-next{position:absolute; right:0; top:50%; translate:0 -50%}
+.lb-bot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; max-width:1100px; width:100%; margin-inline:auto; padding-top:12px}
+.lb-cap{font-size:1rem; font-weight:550}
+.lb-cap span{display:block; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:#EDBE66; margin-bottom:2px}
+
+.toast{position:fixed; z-index:95; left:50%; bottom:calc(24px + env(safe-area-inset-bottom,0px)); translate:-50% 30px; opacity:0; background:var(--papel); color:var(--papel-fg); padding:.75em 1.1em; border-radius:999px; font-weight:650; font-size:.92rem; box-shadow:0 12px 30px -12px rgba(0,0,0,.6); transition:opacity .3s, translate .45s var(--ease); pointer-events:none}
+.toast.is-on{opacity:1; translate:-50% 0}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+  .mq-track{animation:none}
+}
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mark" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="var(--teja)"/><path fill="var(--ocre)" d="M7.5 7.5h12.2l-1.9 9-10.3 1.4zM22.6 7.5h9.9v8.2l-11.4 2.2zM7.5 21l10.8-1.5 2.5 5.4-1.6 7.6H7.5zM23.8 20.6l8.7-1.7v13.6H22.1l1.7-6.6z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8z"/><path fill="currentColor" d="M8.6 7.2c.2 0 .4 0 .6.4l.8 1.9c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.8-.2 1.5-.3.7-1.6 1.4-2.2 1.4-.6.1-1.2.3-4-.8-3.3-1.3-5.3-4.7-5.5-4.9-.2-.2-1.3-1.7-1.3-3.3s.8-2.3 1.1-2.7c.3-.3.6-.4.8-.4h.4z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></g></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m-6-6 6 6 6-6"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5h3.5v15H7zm6.5 0H17v15h-3.5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.5L16 9.5"/></g></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18v-5.6C4 8.6 6 6 9.8 5l.7 1.7C8.3 7.5 7.3 9 7.2 11H10v7zm9.5 0v-5.6c0-3.8 2-6.4 5.8-7.4l.7 1.7c-2.2.8-3.2 2.3-3.3 4.3h2.8v7z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h13m-4-4 4 4-4 4M20 6v12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.7 7 9.5 4.1-1.8 7-5.3 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></g></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.5a7.5 7.5 0 0 1-11 6.6L4 20l1-4.3A7.5 7.5 0 1 1 20 12.5z"/><path d="M9 11h6M9 14h4"/></g></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/></g></symbol>
+</svg>
+
+<div class="progress" aria-hidden="true"><span id="prog"></span></div>
+
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="brand" href="#inicio" aria-label="Alejandro Pavimento PVS Talavera, ir al inicio">
+      <svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand-txt"><span class="brand-name">Alejandro Pavimento PVS</span><span class="brand-sub">Talavera</span></span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#trabajos">Nuestros trabajos</a>
+      <a href="#acabados">Acabados</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn--wa" data-wa href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sheet"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="sheet-head">
+    <span class="brand"><svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg><span class="brand-txt"><span class="brand-name">Alejandro Pavimento PVS</span><span class="brand-sub">Talavera</span></span></span>
+    <button class="sheet-close" id="sheetClose" aria-label="Cerrar menú"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <nav aria-label="Secciones">
+    <a href="#trabajos">Nuestros trabajos</a>
+    <a href="#acabados">Acabados</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="sheet-foot">
+    <a class="btn btn--wa" data-wa href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    <a class="btn btn--ghost" href="https://www.tiktok.com/@alexandrucraciun142" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tiktok"/></svg>TikTok</a>
+  </div>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <canvas class="joints" id="cvBase" aria-hidden="true"></canvas>
+  <canvas class="joints joints--glow" id="cvGlow" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Hormigón impreso y pulido · Talavera de la Reina</span>
+      <h1><span class="ln"><span>Patios que</span></span><span class="ln"><span>dan ganas</span></span><span class="ln"><span>de <em>salir.<svg viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 15C60 4 120 22 182 11S300 3 396 13"/></svg></em></span></span></h1>
+      <p class="hero-lead">Hacemos suelos de hormigón impreso y pulido para patios, entradas, porches, piscinas y naves. Venimos a ver la obra, te contamos las opciones y te damos presupuesto y fechas sin compromiso.</p>
+      <div class="hero-cta">
+        <a class="btn btn--wa mag" data-wa href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pide presupuesto por WhatsApp</a>
+        <a class="btn btn--ghost" href="#trabajos">Ver nuestros trabajos<svg aria-hidden="true"><use href="#i-down"/></svg></a>
+      </div>
+      <div class="hero-facts">
+        <div class="fact"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Visita y presupuesto</b> sin compromiso</span></div>
+        <div class="fact"><svg aria-hidden="true"><use href="#i-pin"/></svg><span><b>Toledo, Madrid, Cáceres</b> y Ávila</span></div>
+        <div class="fact"><svg aria-hidden="true"><use href="#i-phone"/></svg><a class="copy-num" data-wa data-wa-n="0" href="https://wa.me/34643855798" target="_blank" rel="noopener" title="Escribir por WhatsApp">643 855 798</a></div>
+      </div>
+    </div>
+    <div class="collage" id="collage">
+      <figure class="ph ph--1" data-depth="16" data-photo="h-piscina-teja"><img src="img/h-piscina-teja.webp" alt="Playa de piscina en hormigón impreso losa color teja" width="1000" height="750"><figcaption>Losa · teja</figcaption></figure>
+      <figure class="ph ph--2" data-depth="26" data-photo="h-camino-cristalera"><img src="img/h-camino-cristalera.webp" alt="Camino de hormigón impreso en adoquín teja junto a una cristalera" width="640" height="1178"><figcaption>Adoquín · teja</figcaption></figure>
+      <figure class="ph ph--3" data-depth="34" data-photo="h-patio-teja"><img src="img/h-patio-teja.webp" alt="Patio de hormigón impreso en losa teja brillante con sombra de árbol" width="760" height="760"><figcaption>Losa · teja brillo</figcaption></figure>
+      <figure class="ph ph--4" data-depth="44" data-photo="h-pulido"><img src="img/h-pulido.webp" alt="Solera interior de hormigón pulido recién terminada, con reflejos" width="640" height="853"><figcaption>Hormigón pulido</figcaption></figure>
+      <div class="badge" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 100 100"><defs><path id="circ" d="M50 50m-41 0a41 41 0 1 1 82 0a41 41 0 1 1-82 0"/></defs><text><textPath href="#circ" textLength="254" lengthAdjust="spacing">Pavimento PVS · Talavera ·</textPath></text></svg>
+        <svg class="brand-mark"><use href="#mark"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bands" aria-hidden="true" style="--glyph:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M4 4h14l-2 10.5L4 16zM21.5 4H36v9.5l-15.6 3zM4 19.5l12.6-1.7 3 6.2L17.8 36H4zM23 19.2l13-2.4V36H21.2l2-7.6z'/%3E%3C/svg%3E&quot;)">
+  <div class="marquee m2"><div class="mq-track rev"><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i><span>Alejandro Pavimento PVS Talavera</span><i></i></div></div>
+  <div class="marquee m1"><div class="mq-track" id="mq"><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i><span>La mejor calidad, siempre</span><i></i></div></div>
+</div>
+
+
+<!-- ============ NUESTROS TRABAJOS ============ -->
+<section class="sec sec--2" id="trabajos">
+  <span class="bigword" aria-hidden="true">Obras</span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Nuestros trabajos</span><h2>Así quedan nuestras obras.</h2></div>
+      <p>Todas las fotos son de trabajos de Alejandro Pavimento PVS Talavera. Filtra por tipo de obra y toca cualquiera para verla en grande.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar fotos"></div>
+    <div class="gal" id="gal"></div>
+    <div class="gal-more"><button class="btn btn--ghost" id="galMore" type="button">Ver todas las fotos<svg aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+  </div>
+</section>
+
+<!-- ============ LEMA ============ -->
+<section class="lema" aria-label="Nuestro lema">
+  <div class="lema-img"><img src="img/franja-pasillo.webp" alt="Pasillo de hormigón impreso en losa teja con canaleta de desagüe" width="1599" height="790" loading="lazy"></div>
+  <div class="wrap">
+    <span class="eyebrow">Nuestro lema</span>
+    <blockquote>Un trabajo impecable, al <em>mejor precio.</em></blockquote>
+    <p class="mono">— Alejandro Pavimento PVS Talavera</p>
+  </div>
+</section>
+
+<!-- ============ ACABADOS ============ -->
+<section class="sec sec--3" id="acabados" data-joints="31">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Muestrario</span><h2>Elige molde y tono, y míralo de cerca.</h2></div>
+      <p>Cada muestra es una foto real recortada de una de nuestras obras, sin retoques de color. Así puedes ver la textura, la junta y el brillo tal y como quedan.</p>
+    </div>
+    <div class="sim">
+      <div>
+        <div class="sim-frame">
+          <div class="sim-stage" id="simStage">
+            <canvas id="simCv" role="img" aria-label="Muestra real del acabado elegido"></canvas>
+            <button class="sim-pip" id="simPip" type="button"><img id="simPipImg" src="" alt=""><span>Ver la obra</span></button>
+            <button class="btn btn--ocre btn--s sim-again" id="simAgain" type="button">Estampar otra vez</button>
+          </div>
+          <div class="sim-cap"><span id="simCap">Piedra irregular · Teja</span><b>Muestra real</b></div>
+        </div>
+        <div class="sim-ctrl">
+          <div class="ctrl-row" role="radiogroup" aria-label="Molde" id="ctrlMolde"><span class="mono">Molde</span></div>
+        </div>
+      </div>
+      <div class="sim-info">
+        <h3 id="simName">Piedra irregular</h3>
+        <p class="tone" id="simTone">Tono teja</p>
+        <p id="simDesc"></p>
+        <p class="mono sim-sub">Tonos de este molde</p>
+        <div class="sample" id="simTones" role="radiogroup" aria-label="Tono"></div>
+        <div class="sim-cta">
+          <a class="btn btn--wa" id="simWa" href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir este acabado</a>
+          <button class="btn btn--ghost" id="simToForm" type="button">Añadir a mi mensaje<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        </div>
+        <p class="sim-note">El color cambia un poco con la luz del día y con cada amasada. Si dudas entre dos tonos, te enseñamos obras hechas con los dos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="proc" id="proceso">
+  <div class="proc-sticky">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Cómo trabajamos</span><h2>De la tierra al patio terminado, en cinco pasos.</h2></div>
+        <p>Así es una obra de hormigón impreso con nosotros, desde el primer metro que medimos hasta que pisas el suelo acabado.</p>
+      </div>
+      <div class="proc-track" id="procTrack">
+        <article class="step" data-photo="p-medicion">
+          <span class="step-n">1</span>
+          <div class="step-img"><img src="img/p-medicion.webp" alt="Patio de tierra con el nivel láser montado antes de empezar la obra" width="800" height="600" loading="lazy"></div>
+          <div class="step-body"><h3>Medición en la obra</h3><p>Medimos la superficie, miramos cómo está el terreno y hablamos de dibujos y colores. Con eso te damos precio y fechas.</p><ul class="chips"><li>Metros</li><li>Estado del terreno</li><li>Calendario</li></ul></div>
+        </article>
+        <article class="step" data-photo="p-encofrado">
+          <span class="step-n">2</span>
+          <div class="step-img"><img src="img/p-encofrado.webp" alt="Solera recién vertida con el encofrado marcando el borde" width="800" height="600" loading="lazy"></div>
+          <div class="step-body"><h3>Base y encofrado</h3><p>Preparamos y nivelamos el terreno y colocamos el encofrado, que marca la forma y la pendiente para que el agua corra.</p><ul class="chips"><li>Nivel láser</li><li>Pendientes</li><li>Encofrado</li></ul></div>
+        </article>
+        <article class="step" data-photo="p-vertido">
+          <span class="step-n">3</span>
+          <div class="step-img"><img src="img/p-vertido.webp" alt="Hormigón recién extendido y nivelado junto a una nave" width="800" height="600" loading="lazy"></div>
+          <div class="step-body"><h3>Vertido</h3><p>Llega la hormigonera, extendemos el hormigón por toda la superficie y lo reglamos para dejarlo a nivel.</p><ul class="chips"><li>Hormigonera</li><li>Reglado</li><li>Nivelado</li></ul></div>
+        </article>
+        <article class="step" data-photo="p-estampado">
+          <span class="step-n">4</span>
+          <div class="step-img"><img src="img/p-estampado.webp" alt="Hormigón teja recién estampado, todavía con el polvo desmoldeante" width="800" height="600" loading="lazy"></div>
+          <div class="step-body"><h3>Color y estampado</h3><p>Con el hormigón aún fresco echamos el color y el desmoldeante y estampamos el dibujo con los moldes, uno junto a otro.</p><ul class="chips"><li>Color</li><li>Desmoldeante</li><li>Moldes</li></ul></div>
+        </article>
+        <article class="step" data-photo="p-sellado">
+          <span class="step-n">5</span>
+          <div class="step-img"><img src="img/p-sellado.webp" alt="Hormigón impreso teja lavado y sellado con resina, con brillo" width="800" height="600" loading="lazy"></div>
+          <div class="step-body"><h3>Lavado y sellado</h3><p>Lavamos el desmoldeante que sobra, marcamos las juntas y sellamos con resina para proteger el color y darle brillo.</p><ul class="chips"><li>Lavado</li><li>Juntas</li><li>Resina</li></ul></div>
+        </article>
+      </div>
+      <div class="proc-bar" aria-hidden="true"><span id="procBar"></span></div>
+      <p class="proc-hint" aria-hidden="true"><svg><use href="#i-hand"/></svg>Sigue bajando para recorrer los pasos</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOSOTROS ============ -->
+<section class="sec sec--2" id="nosotros" data-joints="57">
+  <div class="wrap nos">
+    <div class="collage2 rv" id="collage2">
+      <figure class="ph c2-1" data-photo="n-adoquin-piscina"><img src="img/n-adoquin-piscina.webp" alt="Adoquín impreso gris alrededor de una piscina con seto" width="1000" height="463" loading="lazy"><figcaption>Adoquín gris junto a la piscina</figcaption></figure>
+      <figure class="ph c2-2" data-photo="n-adoquin-porche"><img src="img/n-adoquin-porche.webp" alt="Camino de adoquín impreso gris hasta un porche de madera" width="520" height="693" loading="lazy"><figcaption>Hasta el porche</figcaption></figure>
+      <figure class="ph c2-3" data-photo="n-barbacoa"><img src="img/n-barbacoa.webp" alt="Zona de barbacoa con suelo de losa impresa gris" width="520" height="693" loading="lazy"><figcaption>Zona de barbacoa</figcaption></figure>
+      <figure class="ph c2-4" data-photo="n-losa-teja-muro"><img src="img/n-losa-teja-muro.webp" alt="Terraza en losa impresa teja junto a un muro de piedra" width="1000" height="463" loading="lazy"><figcaption>Losa teja y muro de piedra</figcaption></figure>
+      <span class="stamp" aria-hidden="true">Reformas en general</span>
+    </div>
+    <div>
+      <span class="eyebrow">Nosotros</span>
+      <h2>Gente de obra, de las de toda la vida.</h2>
+      <p class="nos-lead">Somos Alejandro y su equipo. Venimos del mundo de la construcción y nos dedicamos a lo que mejor sabemos hacer: suelos de hormigón que se ven bien y duran. Y si en casa hace falta algo más, también hacemos reformas.</p>
+      <ul class="vals">
+        <li><i><svg aria-hidden="true"><use href="#i-shield"/></svg></i><div><b>Buenos materiales</b><span>Trabajamos con materiales de calidad y con seguridad en cada obra.</span></div></li>
+        <li><i><svg aria-hidden="true"><use href="#i-chat"/></svg></i><div><b>Te contamos cada paso</b><span>Sabes en todo momento qué estamos haciendo y qué viene después.</span></div></li>
+        <li><i><svg aria-hidden="true"><use href="#i-cal"/></svg></i><div><b>Cumplimos los plazos</b><span>Te damos un calendario y trabajamos para cumplirlo.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VÍDEOS ============ -->
+<section class="sec sec--3" id="videos">
+  <span class="bigword" aria-hidden="true">Vídeo</span>
+  <div class="wrap reel-wrap">
+    <div class="reel-phone rv">
+      <video id="reel" poster="vid/obras-poster.webp" muted loop playsinline preload="metadata" aria-label="Vídeo con tres obras terminadas: losa gris junto a una casa, camino teja junto a un muro de piedra y playa de piscina teja"><source src="vid/obras.webm" type="video/webm"><source src="vid/obras.mp4" type="video/mp4"></video>
+      <button class="reel-toggle" id="reelToggle" type="button" aria-label="Pausar vídeo"><svg aria-hidden="true"><use href="#i-pause"/></svg></button>
+      <span class="reel-rec" aria-hidden="true"><i></i>Obras terminadas</span>
+    </div>
+    <div class="reel-txt">
+      <span class="eyebrow">En vídeo</span>
+      <h2>Recorre nuestras obras terminadas.</h2>
+      <p>Un paseo por tres trabajos ya entregados, de cerca y sin cortes. Así se ve el dibujo, la junta y el brillo de la resina con luz de día.</p>
+      <ol class="reel-list" id="reelList">
+        <li data-t="0"><b>Losa pizarra gris</b><span>Alrededor de una casa de campo</span></li>
+        <li data-t="3.6"><b>Losa rústica teja</b><span>Camino junto a un muro de piedra</span></li>
+        <li data-t="7.2"><b>Losa teja</b><span>Playa de piscina con vistas al monte</span></li>
+      </ol>
+      <div class="vids-foot">
+        <a class="btn" href="https://www.tiktok.com/@alexandrucraciun142" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tiktok"/></svg>Más vídeos en TikTok</a>
+        <p class="mono">@alexandrucraciun142</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPINIONES ============ -->
+<section class="sec sec--teja ops" id="opiniones">
+  <div class="ops-bg" aria-hidden="true"><img src="img/ops-bg.webp" alt="" width="800" height="900" loading="lazy"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Lo que dicen los clientes</span><h2>Clientes contentos que nos recomiendan.</h2></div>
+    </div>
+    <div class="quotes">
+      <figure class="q rv"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>El resultado del trabajo en la piscina de nuestra casa ha sido increíble, estamos muy contentos con la obra que nos han realizado, ¡y a muy buen precio!</blockquote><figcaption><span>J</span><div>Javier B.<small>Cliente · piscina</small></div></figcaption></figure>
+      <figure class="q rv"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Nos arreglaron el suelo de huerto en poco tiempo y después de ofrecernos varias alternativas. Muy satisfechos con el trabajo. ¡Recomendable 100%!</blockquote><figcaption><span>L</span><div>Lidia S.<small>Clienta · suelo de huerto</small></div></figcaption></figure>
+      <figure class="q rv"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>Después de buscar mucho, encontré la empresa, y desde el primer momento que contacté con ellos estuvieron pendientes de nosotros. Lo recomendamos.</blockquote><figcaption><span>J</span><div>Jorge R.<small>Cliente</small></div></figcaption></figure>
+    </div>
+    <p class="src">Opiniones publicadas en la web de la empresa, <a href="https://pavimentospvs.com" target="_blank" rel="noopener">pavimentospvs.com</a>.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec sec--3" id="contacto" data-joints="83" data-glow>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Contacto</span><h2>Cuéntanos tu obra.</h2></div>
+      <p>Elige cómo prefieres hablar con nosotros. Si tocas el número, se abre WhatsApp con el saludo ya escrito.</p>
+    </div>
+    <div class="contact">
+      <div>
+        <div class="cards" id="cards"></div>
+        <p class="contact-note">Si un botón no abre la aplicación desde aquí, copia el número o el correo y escríbenos desde tu móvil.</p>
+      </div>
+      <form class="form" id="form" novalidate>
+        <h3>Prepara tu mensaje</h3>
+        <p>Rellena lo que sepas y te dejamos el mensaje escrito. Solo tienes que enviarlo.</p>
+        <div class="fgrid">
+          <div class="field"><label for="fNombre">Nombre</label><input id="fNombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre"></div>
+          <div class="field"><label for="fLugar">Localidad</label><input id="fLugar" name="lugar" autocomplete="address-level2" placeholder="Ej. Oropesa"></div>
+          <div class="field full"><span class="lab" id="lTipo">¿Qué quieres hacer?</span>
+            <div class="pills" role="radiogroup" aria-labelledby="lTipo" id="fTipo"></div>
+          </div>
+          <div class="field"><label for="fM2">Metros aproximados</label><input id="fM2" name="m2" inputmode="numeric" placeholder="Ej. 40"></div>
+          <div class="field"><label for="fAcab">Acabado</label><select id="fAcab" name="acabado"></select></div>
+          <div class="field full"><label for="fColor">Tono</label><select id="fColor" name="color"></select></div>
+          <div class="field full"><label for="fMsg">Algo más que quieras contarnos</label><textarea id="fMsg" name="msg" placeholder="Ej. Es un patio trasero con un poco de pendiente."></textarea></div>
+        </div>
+        <div class="preview"><span class="mono">Así llegará tu mensaje</span><div class="bubble" id="bubble"></div></div>
+        <div class="send">
+          <a class="btn btn--wa" id="sendWa" href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Abrir WhatsApp con el mensaje</a>
+          <button class="btn btn--ghost" type="button" id="copyMsg"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar mensaje</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-word" id="footWord" aria-label="Alejandro Pavimento PVS Talavera">Alejandro Pavimento PVS Talavera</div>
+    <div class="foot-row">
+      <span>Alejandro Pavimento PVS Talavera · Hormigón impreso y pulido</span>
+      <nav aria-label="Enlaces">
+        <a href="#trabajos">Nuestros trabajos</a>
+        <a href="#acabados">Acabados</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#inicio">Volver arriba</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" data-wa href="https://wa.me/34643855798" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="fab-tip">¿Hablamos por WhatsApp?</span></a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de fotos" hidden>
+  <div class="lb-top"><span class="lb-count" id="lbCount"></span><button class="lb-x" id="lbX" aria-label="Cerrar visor"><svg aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="lb-stage" id="lbStage">
+    <img id="lbImg" alt="">
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Foto anterior"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Foto siguiente"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+  </div>
+  <div class="lb-bot"><p class="lb-cap" id="lbCap"></p><a class="btn btn--wa btn--s" id="lbWa" href="https://wa.me/34643855798" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero algo así</a></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+const easeIn = t => t * t * t;
+
+/* ================= Datos ================= */
+const WA = ['34643855798'];
+const TEL = ['643 855 798'];
+const EMAIL = 'pvshormigontalavera@gmail.com';
+const TIKTOK = 'https://www.tiktok.com/@alexandrucraciun142';
+const MAPS = 'https://maps.app.goo.gl/NTdvz5BNPvQXhMDa8';
+const MSG0 = 'Hola, buenas. He visto vuestra página web y me interesa vuestro trabajo. ¿Me podéis dar más información?';
+const wa = (t, i = 0) => `https://wa.me/${WA[i] || WA[0]}?text=${encodeURIComponent(t || MSG0)}`;
+const IMG = f => `img/${f}.webp`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+const CATS = { patios: 'Patios y terrazas', caminos: 'Caminos y pasillos', piscinas: 'Piscinas' };
+
+// [archivo, ancho, alto, categoría, pie, destacado]
+const G = [
+  ['g-losa-gris-olivos', 1400, 788, 'patios', 'Losa pizarra gris alrededor de una casa, respetando los olivos', 'b'],
+  ['g-piscina-teja-monte', 800, 1440, 'piscinas', 'Playa de piscina en losa teja con vistas al monte'],
+  ['g-pasillo-adoquin-gris', 800, 1440, 'caminos', 'Pasillo de adoquín gris junto a la tapia'],
+  ['g-piscina-pasos', 1400, 788, 'piscinas', 'Piscina con pasos de hormigón sobre el césped'],
+  ['g-piedra-gris-alto', 1400, 769, 'patios', 'Piedra irregular gris vista desde arriba'],
+  ['g-patio-gris-muro-negro', 800, 1440, 'patios', 'Patio en losa gris junto a un muro de piedra negra'],
+  ['g-camino-teja-piedra', 1400, 788, 'caminos', 'Losa rústica teja junto a un muro de piedra y olivos', 'b'],
+  ['g-piscina-adoquin-gris', 1400, 711, 'piscinas', 'Adoquín gris alrededor de una piscina'],
+  ['g-patio-ocre', 640, 1178, 'patios', 'Patio en losa rústica ocre junto a una casa encalada'],
+  ['g-adoquin-gris-cesped', 1400, 716, 'patios', 'Patio de adoquín gris entre el césped y la piscina'],
+  ['g-patio-gris-tapia', 1400, 709, 'patios', 'Patio en losa gris claro con verja'],
+  ['g-camino-ocre-piedra', 640, 1178, 'caminos', 'Camino en piedra irregular ocre'],
+  ['g-patio-colegio', 800, 1064, 'patios', 'Patio de colegio en losa gris con canaleta de desagüe'],
+];
+// Fotos de otras partes de la página (inicio, proceso, nosotros): solo para el visor
+const EXTRA = [
+  ['h-piscina-teja', 1000, 750, 'piscinas', 'Playa de piscina en losa teja'],
+  ['h-camino-cristalera', 640, 1178, 'caminos', 'Camino en adoquín teja junto a una cristalera'],
+  ['h-patio-teja', 760, 760, 'patios', 'Patio en losa teja con brillo de resina'],
+  ['h-pulido', 640, 853, null, 'Solera interior de hormigón pulido'],
+  ['p-medicion', 800, 600, null, 'Antes de empezar: terreno y nivel láser'],
+  ['p-encofrado', 800, 600, null, 'Solera recién vertida dentro del encofrado'],
+  ['p-vertido', 800, 600, null, 'Hormigón extendido y nivelado'],
+  ['p-estampado', 800, 600, null, 'Recién estampado, con el desmoldeante'],
+  ['p-sellado', 800, 600, null, 'Lavado y sellado con resina'],
+  ['n-adoquin-piscina', 1000, 463, 'piscinas', 'Adoquín gris junto a la piscina'],
+  ['n-adoquin-porche', 520, 693, 'caminos', 'Camino de adoquín gris hasta el porche'],
+  ['n-barbacoa', 520, 693, 'patios', 'Zona de barbacoa en losa gris'],
+  ['n-losa-teja-muro', 1000, 463, 'patios', 'Terraza en losa teja junto a un muro de piedra'],
+];
+const PH = new Map([...G, ...EXTRA].map(g => [g[0], g]));
+
+// Muestrario: [tono, muestra (recorte real), foto de la obra]
+const MATS = {
+  piedra: { name: 'Piedra irregular', desc: 'Piedras de formas libres con la junta bien marcada. Queda natural en patios, caminos y accesos.', v: [['Ocre', 'piedra-ocre', 'g-camino-ocre-piedra'], ['Gris', 'piedra-gris', 'g-piedra-gris-alto']] },
+  losa: { name: 'Losa pizarra', desc: 'Losas rectangulares con textura de pizarra. Sobria, elegante y fácil de combinar con cualquier fachada.', v: [['Teja', 'losa-teja', 'g-camino-teja-piedra'], ['Ocre', 'losa-ocre', 'g-piscina-teja-monte'], ['Gris oscuro', 'losa-gris', 'g-patio-gris-muro-negro'], ['Gris claro', 'losa-claro', 'g-patio-gris-tapia']] },
+  adoquin: { name: 'Adoquín', desc: 'Hileras de adoquín a matajunta, como el empedrado de siempre. Va muy bien en caminos, entradas y alrededor de piscinas.', v: [['Gris', 'adoquin-gris', 'g-adoquin-gris-cesped'], ['Grafito', 'adoquin-grafito', 'g-pasillo-adoquin-gris']] },
+}
+
+/* ================= Utilidades ================= */
+const toastEl = $('#toast'); let toastT;
+function toast(m) { toastEl.textContent = m; toastEl.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('is-on'), 2300); }
+async function copyText(text, ok = 'Copiado') {
+  try { await navigator.clipboard.writeText(text); toast(`${ok}: ${text.length > 34 ? text.slice(0, 34) + '…' : text}`); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta); ta.select(); let done = false; try { done = document.execCommand('copy'); } catch (_) {} ta.remove();
+    toast(done ? ok : 'No se pudo copiar: mantén pulsado el texto para copiarlo');
+  }
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-copy]'); if (b) { e.preventDefault(); copyText(b.dataset.copy); } });
+$$('a[data-wa]').forEach(a => { a.href = wa(MSG0, +a.dataset.waN || 0); });
+
+function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+/* ================= Geometría (Voronoi para la piedra) ================= */
+function clipPoly(poly, a, b, c) {
+  const out = [];
+  for (let i = 0; i < poly.length; i++) {
+    const P = poly[i], Q = poly[(i + 1) % poly.length];
+    const dp = a * P[0] + b * P[1] - c, dq = a * Q[0] + b * Q[1] - c;
+    if (dp <= 0) out.push(P);
+    if ((dp < 0 && dq > 0) || (dp > 0 && dq < 0)) { const t = dp / (dp - dq); out.push([P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t]); }
+  }
+  return out;
+}
+function voronoi(pts, W, H, maxD, pad = 40) {
+  const cells = [], m2 = maxD * maxD;
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i];
+    let poly = [[-pad, -pad], [W + pad, -pad], [W + pad, H + pad], [-pad, H + pad]];
+    for (let j = 0; j < pts.length && poly.length > 2; j++) {
+      if (i === j) continue;
+      const q = pts[j], dx = q[0] - p[0], dy = q[1] - p[1];
+      if (dx * dx + dy * dy > m2) continue;
+      poly = clipPoly(poly, dx, dy, dx * (p[0] + q[0]) / 2 + dy * (p[1] + q[1]) / 2);
+    }
+    if (poly.length > 2) cells.push(poly);
+  }
+  return cells;
+}
+function area(poly) { let a = 0; for (let i = 0; i < poly.length; i++) { const [x0, y0] = poly[i], [x1, y1] = poly[(i + 1) % poly.length]; a += x0 * y1 - x1 * y0; } return a / 2; }
+function centroid(poly) {
+  let a = 0, cx = 0, cy = 0;
+  for (let i = 0; i < poly.length; i++) { const [x0, y0] = poly[i], [x1, y1] = poly[(i + 1) % poly.length]; const f = x0 * y1 - x1 * y0; a += f; cx += (x0 + x1) * f; cy += (y0 + y1) * f; }
+  a *= .5; return a ? [cx / (6 * a), cy / (6 * a)] : poly[0];
+}
+function insetPoly(poly, d) {
+  const n = poly.length, s = Math.sign(area(poly)) || 1, L = [];
+  for (let i = 0; i < n; i++) {
+    const P = poly[i], Q = poly[(i + 1) % n], dx = Q[0] - P[0], dy = Q[1] - P[1], len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len * s, ny = dx / len * s;
+    L.push([P[0] + nx * d, P[1] + ny * d, dx, dy]);
+  }
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const A = L[(i - 1 + n) % n], B = L[i];
+    const cr = A[2] * B[3] - A[3] * B[2];
+    if (Math.abs(cr) < 1e-9) { out.push([B[0], B[1]]); continue; }
+    const t = ((B[0] - A[0]) * B[3] - (B[1] - A[1]) * B[2]) / cr;
+    out.push([A[0] + A[2] * t, A[1] + A[3] * t]);
+  }
+  const a2 = area(out);
+  if (Math.sign(a2) !== s || Math.abs(a2) < d * d * 6) return null;
+  return out;
+}
+function jitterPts(W, H, s, rnd, j = .4) {
+  const pts = [], rows = Math.ceil(H / (s * .87)) + 2, cols = Math.ceil(W / s) + 2;
+  for (let r = -1; r < rows; r++) for (let c = -1; c < cols; c++)
+    pts.push([(c + (r & 1 ? .5 : 0)) * s + (rnd() - .5) * 2 * j * s, r * s * .87 + (rnd() - .5) * 2 * j * s]);
+  return pts;
+}
+function stoneCells(W, H, s, rnd, relax = 1) {
+  let pts = jitterPts(W, H, s, rnd);
+  for (let k = 0; k < relax; k++) pts = voronoi(pts, W, H, s * 3).map(centroid);
+  return voronoi(pts, W, H, s * 3);
+}
+function roughen(poly, amt, rnd) { // añade un punto intermedio desplazado en cada lado (bordes más naturales)
+  const out = [];
+  for (let i = 0; i < poly.length; i++) {
+    const P = poly[i], Q = poly[(i + 1) % poly.length]; out.push(P);
+    const dx = Q[0] - P[0], dy = Q[1] - P[1], len = Math.hypot(dx, dy);
+    if (len > 26) { const t = .35 + rnd() * .3, o = (rnd() - .5) * amt * len; out.push([P[0] + dx * t - dy / len * o, P[1] + dy * t + dx / len * o]); }
+  }
+  return out;
+}
+function roundPoly(ctx, pts, r) {
+  const n = pts.length;
+  for (let i = 0; i < n; i++) {
+    const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n];
+    const d1 = Math.hypot(p0[0] - p1[0], p0[1] - p1[1]) || 1, d2 = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]) || 1;
+    const r1 = Math.min(r, d1 * .45) / d1, r2 = Math.min(r, d2 * .45) / d2;
+    const ax = p1[0] + (p0[0] - p1[0]) * r1, ay = p1[1] + (p0[1] - p1[1]) * r1;
+    const bx = p1[0] + (p2[0] - p1[0]) * r2, by = p1[1] + (p2[1] - p1[1]) * r2;
+    if (i === 0) ctx.moveTo(ax, ay); else ctx.lineTo(ax, ay);
+    ctx.quadraticCurveTo(p1[0], p1[1], bx, by);
+  }
+  ctx.closePath();
+}
+function rrect(ctx, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.closePath();
+}
+
+/* ================= Cabecera, menú y progreso ================= */
+const top = $('#top'), prog = $('#prog');
+let lastY = scrollY;
+const sheet = $('#sheet'), menuBtn = $('#menuBtn');
+function setSheet(open) {
+  sheet.classList.toggle('is-open', open); menuBtn.setAttribute('aria-expanded', open);
+  document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (open) $('#sheetClose').focus({ preventScroll: true }); else menuBtn.focus({ preventScroll: true });
+}
+menuBtn.addEventListener('click', () => setSheet(true));
+$('#sheetClose').addEventListener('click', () => setSheet(false));
+$$('#sheet nav a').forEach(a => a.addEventListener('click', () => setSheet(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('is-open')) setSheet(false); });
+
+const navLinks = $$('.nav a');
+const secIO = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) navLinks.forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+['trabajos', 'acabados', 'proceso', 'nosotros', 'videos', 'contacto'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+const fab = $('#fab');
+new IntersectionObserver(es => es.forEach(en => fab.classList.toggle('is-away', en.isIntersecting)), { threshold: .15 }).observe($('#contacto'));
+
+/* ================= Hero: juntas de piedra con foco ================= */
+(function hero() {
+  const hero = $('#inicio'), cb = $('#cvBase'), cg = $('#cvGlow');
+  let W = 0, H = 0, dpr = 1, cells = [], prog = RM ? 1 : 0, started = false;
+  function gen() {
+    const r = hero.getBoundingClientRect(); if (!r.width) return;
+    W = r.width; H = r.height; dpr = Math.min(2, devicePixelRatio || 1);
+    [cb, cg].forEach(c => { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
+    const rnd = mulberry32(17), s = W < 700 ? 74 : 104;
+    const ox = W * .72, oy = H * .4;
+    cells = stoneCells(W, H, s, rnd).map(p => insetPoly(p, 4)).filter(Boolean)
+      .map(p => ({ p, d: Math.hypot(centroid(p)[0] - ox, centroid(p)[1] - oy) })).sort((a, b) => a.d - b.d).map(o => o.p);
+    draw();
+  }
+  function draw() {
+    const n = Math.floor(cells.length * prog);
+    [[cb, .11, 1.1], [cg, .85, 1.5]].forEach(([c, al, lw]) => {
+      const x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, W, H);
+      x.globalAlpha = al; x.strokeStyle = '#E2AC4C'; x.lineWidth = lw; x.lineJoin = 'round';
+      x.beginPath(); for (let i = 0; i < n; i++) roundPoly(x, cells[i], 12); x.stroke();
+    });
+  }
+  function intro() {
+    if (started) return; started = true;
+    if (RM) { prog = 1; draw(); return; }
+    const t0 = performance.now();
+    (function f(now) { prog = easeOut(clamp((now - t0) / 1800, 0, 1)); draw(); if (prog < 1) requestAnimationFrame(f); })(t0);
+  }
+  let rT; new ResizeObserver(() => { clearTimeout(rT); rT = setTimeout(() => { gen(); }, 120); }).observe(hero);
+  gen(); requestAnimationFrame(() => setTimeout(intro, 250));
+
+  // foco que sigue al puntero (o se mueve solo en móviles)
+  let mx = .72, my = .4, tx = .72, ty = .4, inside = false, visible = true;
+  hero.addEventListener('pointermove', e => { if (e.pointerType !== 'mouse') return; const r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; inside = true; });
+  hero.addEventListener('pointerleave', () => { inside = false; });
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
+  const phs = $$('.ph', hero).map(el => ({ el, d: +el.dataset.depth || 20, x: 0, y: 0 }));
+  function loop(now) {
+    if (visible && !RM) {
+      if (!inside) { tx = .62 + .26 * Math.sin(now / 2600); ty = .42 + .28 * Math.sin(now / 1900 + 1); }
+      mx = lerp(mx, tx, .08); my = lerp(my, ty, .08);
+      hero.style.setProperty('--mx', (mx * 100).toFixed(2) + '%'); hero.style.setProperty('--my', (my * 100).toFixed(2) + '%');
+      if (FINE) phs.forEach(o => {
+        const gx = inside ? (mx - .5) * o.d : 0, gy = inside ? (my - .5) * o.d : 0;
+        o.x = lerp(o.x, gx, .1); o.y = lerp(o.y, gy, .1);
+        o.el.style.setProperty('--tx', o.x.toFixed(2) + 'px'); o.el.style.setProperty('--ty', o.y.toFixed(2) + 'px');
+      });
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  $$('.ph', hero).forEach(el => el.addEventListener('click', () => {
+    const list = $$('.ph', hero).map(e => PH.get(e.dataset.photo)).filter(Boolean);
+    openLB(list, list.findIndex(g => g[0] === el.dataset.photo), el.querySelector('img'));
+  }));
+})();
+
+/* Botones magnéticos */
+if (FINE && !RM) $$('.mag').forEach(b => {
+  b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`; });
+  b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+});
+
+/* ================= Marquesina con la velocidad del scroll ================= */
+const mq = $('#mq'); let mqAnim = null, mqV = 0;
+if (!RM && mq.getAnimations) mqAnim = mq.getAnimations()[0] || null;
+
+/* ================= Bucle de scroll ================= */
+let ticking = false;
+function onScroll() {
+  if (ticking) return; ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
+    if (!sheet.classList.contains('is-open')) top.classList.toggle('is-hidden', y > lastY + 2 && y > 520);
+    if (y < lastY - 2) top.classList.remove('is-hidden');
+    mqV = y - lastY;
+    lastY = y;
+    procUpdate();
+  });
+}
+addEventListener('scroll', onScroll, { passive: true });
+(function mqLoop() {
+  if (mqAnim) { const r = 1 + Math.min(5, Math.abs(mqV) * .12); mqAnim.playbackRate = (mqV < -1 ? -r : r); mqV *= .9; }
+  requestAnimationFrame(mqLoop);
+})();
+
+/* ================= Galería con filtros ================= */
+const gal = $('#gal'), filters = $('#filters'), moreBtn = $('#galMore');
+const LIMIT = 10; let expanded = false, curCat = 'todo';
+G.forEach((g, i) => {
+  const [f, w, h, c, t, big] = g, b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'gi' + (big ? ' b' : h / w > 1.25 ? ' t' : w / h > 1.75 ? ' w' : '');
+  b.dataset.cat = c; b.dataset.i = i; b.dataset.f = f;
+  b.setAttribute('aria-label', `Ver foto: ${t}`);
+  b.innerHTML = `<span class="im"><img src="${IMG(f)}" alt="${esc(t)}" width="${w}" height="${h}" loading="lazy" decoding="async"></span><span class="cap" aria-hidden="true"><b>${CATS[c].split(' ')[0]}</b><span>${esc(t)}</span></span>`;
+  b.addEventListener('click', () => { const list = visibleList(); openLB(list, list.findIndex(x => x[0] === f), b.querySelector('img')); });
+  gal.appendChild(b);
+});
+const counts = G.reduce((m, g) => (m[g[3]] = (m[g[3]] || 0) + 1, m), {});
+[['todo', 'Todo', G.length], ...Object.keys(CATS).map(k => [k, CATS[k], counts[k] || 0])].forEach(([k, label, n]) => {
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.dataset.cat = k;
+  b.setAttribute('aria-pressed', k === 'todo'); b.innerHTML = `${label} <small>${n}</small>`;
+  b.addEventListener('click', () => setFilter(k)); filters.appendChild(b);
+});
+function shown(el) { const i = +el.dataset.i; return curCat === 'todo' ? (expanded || i < LIMIT) : el.dataset.cat === curCat; }
+function visibleList() { return [...gal.children].filter(el => !el.hidden).map(el => G[+el.dataset.i]); }
+function setFilter(cat, animate = true) {
+  curCat = cat;
+  $$('.chip', filters).forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+  const items = [...gal.children];
+  const first = new Map(items.map(el => [el, el.hidden ? null : el.getBoundingClientRect()]));
+  items.forEach(el => { el.hidden = !shown(el); });
+  moreBtn.parentElement.hidden = !(cat === 'todo' && !expanded);
+  if (!animate || RM) return;
+  let k = 0;
+  items.forEach(el => {
+    if (el.hidden) return;
+    const r = el.getBoundingClientRect(), f = first.get(el);
+    if (f) {
+      const dx = f.left - r.left, dy = f.top - r.top, sx = f.width / r.width, sy = f.height / r.height;
+      if (Math.abs(dx) + Math.abs(dy) > 1 || Math.abs(sx - 1) > .01 || Math.abs(sy - 1) > .01)
+        el.animate([{ transform: `translate(${dx}px,${dy}px) scale(${sx},${sy})` }, { transform: 'none' }], { duration: 620, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    } else {
+      el.animate([{ opacity: 0, transform: 'translateY(28px) scale(.9)' }, { opacity: 1, transform: 'none' }], { duration: 560, delay: Math.min(k++, 14) * 38, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+    }
+  });
+}
+moreBtn.addEventListener('click', () => { expanded = true; setFilter('todo'); });
+setFilter('todo', false);
+$$('[data-filter]').forEach(a => a.addEventListener('click', () => { setTimeout(() => setFilter(a.dataset.filter), 350); }));
+$$('[data-photo-link]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); const g = PH.get(a.dataset.photoLink); if (g) openLB([g], 0, null); }));
+
+/* ================= Visor de fotos ================= */
+const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap'), lbCount = $('#lbCount'), lbWa = $('#lbWa');
+let lbList = [], lbI = 0, lbBack = null;
+function openLB(list, i, fromImg) {
+  if (!list.length) return;
+  lbList = list; lbI = Math.max(0, i); lbBack = document.activeElement;
+  lb.hidden = false; document.documentElement.style.overflow = 'hidden';
+  requestAnimationFrame(() => lb.classList.add('is-open'));
+  showLB(0, fromImg);
+  $('#lbX').focus({ preventScroll: true });
+}
+async function showLB(dir, fromImg) {
+  const [f, w, h, c, t] = lbList[lbI];
+  lbImg.src = IMG(f); lbImg.alt = t; lbImg.width = w; lbImg.height = h;
+  lbCap.innerHTML = `<span>${CATS[c] || 'Foto de obra'}</span>${esc(t)}`;
+  lbCount.textContent = `${lbI + 1} / ${lbList.length}`;
+  lbWa.href = wa(`Hola, buenas. He visto en vuestra página web la foto "${t}" y me gustaría algo así. ¿Me podéis dar presupuesto?`);
+  $('#lbPrev').hidden = $('#lbNext').hidden = lbList.length < 2;
+  if (RM) return;
+  try { await lbImg.decode(); } catch (_) {}
+  if (fromImg && fromImg.getBoundingClientRect().width) {
+    const a = fromImg.getBoundingClientRect(), b = lbImg.getBoundingClientRect();
+    const s = Math.max(a.width / b.width, a.height / b.height);
+    lbImg.animate([{ transform: `translate(${a.left + a.width / 2 - (b.left + b.width / 2)}px,${a.top + a.height / 2 - (b.top + b.height / 2)}px) scale(${s})`, opacity: .6 }, { transform: 'none', opacity: 1 }], { duration: 560, easing: 'cubic-bezier(.16,1,.3,1)' });
+  } else if (dir) {
+    lbImg.animate([{ opacity: 0, transform: `translateX(${dir * 70}px) scale(.96)` }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
+  }
+}
+function stepLB(d) { if (lbList.length < 2) return; lbI = (lbI + d + lbList.length) % lbList.length; showLB(d); }
+function closeLB() {
+  lb.classList.remove('is-open'); document.documentElement.style.overflow = '';
+  setTimeout(() => { lb.hidden = true; }, RM ? 0 : 320);
+  if (lbBack && lbBack.focus) lbBack.focus({ preventScroll: true });
+}
+$('#lbX').addEventListener('click', closeLB);
+$('#lbPrev').addEventListener('click', () => stepLB(-1));
+$('#lbNext').addEventListener('click', () => stepLB(1));
+$('#lbStage').addEventListener('click', e => { if (e.target.id === 'lbStage') closeLB(); });
+addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') closeLB(); else if (e.key === 'ArrowRight') stepLB(1); else if (e.key === 'ArrowLeft') stepLB(-1);
+});
+let swX = null;
+$('#lbStage').addEventListener('pointerdown', e => { swX = e.clientX; });
+$('#lbStage').addEventListener('pointerup', e => { if (swX == null) return; const d = e.clientX - swX; swX = null; if (Math.abs(d) > 50) stepLB(d < 0 ? 1 : -1); });
+
+/* ================= Vídeo de obras ================= */
+(function reel() {
+  const v = $('#reel'), tg = $('#reelToggle'), items = $$('#reelList li');
+  if (!v) return;
+  let userPaused = RM;
+  const setIcon = () => { const p = v.paused; tg.innerHTML = `<svg aria-hidden="true"><use href="#i-${p ? 'play' : 'pause'}"/></svg>`; tg.setAttribute('aria-label', p ? 'Reproducir vídeo' : 'Pausar vídeo'); };
+  const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => setIcon()); };
+  tg.addEventListener('click', () => { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
+  v.addEventListener('play', setIcon); v.addEventListener('pause', setIcon);
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !userPaused) play(); else if (!e.isIntersecting) v.pause(); }), { threshold: .35 }).observe(v);
+  const marks = items.map(li => +li.dataset.t);
+  v.addEventListener('timeupdate', () => { let k = 0; marks.forEach((t, i) => { if (v.currentTime >= t) k = i; }); items.forEach((li, i) => li.classList.toggle('is-on', i === k)); });
+  items.forEach(li => { li.tabIndex = 0; li.setAttribute('role', 'button'); const go = () => { v.currentTime = +li.dataset.t + .05; if (v.paused && !userPaused) play(); }; li.addEventListener('click', go); li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }); });
+  setIcon();
+})();
+
+/* ================= Proceso en horizontal (escritorio) ================= */
+const proc = $('#proceso'), track = $('#procTrack'), pbar = $('#procBar');
+let procDist = 0;
+function procLayout() {
+  const ok = !RM && innerWidth >= 1100 && innerHeight >= 640;
+  proc.classList.toggle('is-pinned', ok);
+  if (!ok) { proc.style.height = ''; track.style.transform = ''; procDist = 0; return; }
+  const wrap = track.parentElement, cs = getComputedStyle(wrap);
+  const inner = wrap.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  procDist = Math.max(0, track.scrollWidth - inner);
+  proc.style.height = (innerHeight + procDist) + 'px';
+  procUpdate();
+}
+function procUpdate() {
+  if (!procDist) return;
+  const r = proc.getBoundingClientRect(), p = clamp(-r.top / (proc.offsetHeight - innerHeight), 0, 1);
+  track.style.transform = `translate3d(${(-p * procDist).toFixed(1)}px,0,0)`;
+  pbar.style.transform = `scaleX(${p})`;
+}
+let prT; addEventListener('resize', () => { clearTimeout(prT); prT = setTimeout(procLayout, 150); });
+procLayout();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(procLayout);
+
+/* ================= Pie: palabra con letras sueltas ================= */
+const fw = $('#footWord');
+fw.innerHTML = [...fw.textContent].map(ch => ch === ' ' ? '<span aria-hidden="true">&nbsp;</span>' : `<span aria-hidden="true">${ch}</span>`).join('');
+function fitWord() { // ajusta el tamaño para que el nombre ocupe el ancho sin salirse
+  fw.style.removeProperty('--fw-size');
+  const avail = fw.parentElement.clientWidth - parseFloat(getComputedStyle(fw.parentElement).paddingLeft) * 2;
+  const cur = parseFloat(getComputedStyle(fw).fontSize), need = fw.scrollWidth;
+  if (need > 0) fw.style.setProperty('--fw-size', Math.min(cur * avail / need, 200).toFixed(1) + 'px');
+}
+fitWord(); addEventListener('resize', fitWord);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord);
+
+/* ================= Contacto ================= */
+const cards = $('#cards');
+TEL.forEach((t, i) => {
+  cards.insertAdjacentHTML('beforeend', `<div class="cc rv"><span class="cc-ic"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><div class="cc-main"><small>Toca el número para escribir por WhatsApp</small><a class="num" href="${wa(MSG0, i)}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al ${t}">${t}</a></div><div class="cc-act"><a class="ib ib--wa" href="${wa(MSG0, i)}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a><a class="ib" href="tel:+34${t.replace(/ /g, '')}"><svg aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a><button class="ib" type="button" data-copy="${t}" aria-label="Copiar el teléfono ${t}"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></div></div>`);
+});
+cards.insertAdjacentHTML('beforeend', `
+<div class="cc rv"><span class="cc-ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><div class="cc-main"><small>Correo electrónico</small><b>${EMAIL}</b></div><div class="cc-act"><a class="ib" href="mailto:${EMAIL}?subject=${encodeURIComponent('Presupuesto de hormigón')}"><svg aria-hidden="true"><use href="#i-mail"/></svg>Escribir</a><button class="ib" type="button" data-copy="${EMAIL}" aria-label="Copiar el correo"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></div></div>
+<div class="cc rv"><span class="cc-ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div class="cc-main"><small>Dónde estamos</small><b>Talavera de la Reina (Toledo)</b></div><div class="cc-act"><a class="ib" href="${MAPS}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a></div></div>`);
+
+const TIPOS = { 'Patio o terraza': 'un patio o terraza', 'Entrada o garaje': 'una entrada o garaje', 'Playa de piscina': 'la playa de una piscina', 'Camino o rampa': 'un camino o rampa', 'Nave o local': 'el suelo de una nave o local', 'Otra cosa': 'una obra' };
+const ACABS = ['Aún no lo sé', ...Object.values(MATS).map(m => m.name)];
+const COLS = ['Aún no lo sé', ...new Set(Object.values(MATS).flatMap(m => m.v.map(v => v[0])))];
+const form = $('#form'), fTipo = $('#fTipo'), fAcab = $('#fAcab'), fColor = $('#fColor'), fTel = null;
+Object.keys(TIPOS).forEach((k, i) => fTipo.insertAdjacentHTML('beforeend', `<label><input type="radio" name="tipo" id="fTipo${i}" value="${k}"><span>${k}</span></label>`));
+fAcab.innerHTML = ACABS.map(a => `<option>${a}</option>`).join('');
+fColor.innerHTML = COLS.map(a => `<option>${a}</option>`).join('');
+function buildMsg() {
+  const n = $('#fNombre').value.trim(), l = $('#fLugar').value.trim(), tipo = (form.querySelector('input[name=tipo]:checked') || {}).value;
+  const m2 = $('#fM2').value.trim().replace(/[^\d.,]/g, ''), ac = fAcab.value, co = fColor.value, msg = $('#fMsg').value.trim();
+  let s = 'Hola, buenas';
+  if (n) s += `, soy ${n}`;
+  if (l) s += n ? ` de ${l}` : `, os escribo desde ${l}`;
+  s += '. He visto vuestra página web y me interesa vuestro trabajo. Me gustaría pedir presupuesto';
+  if (tipo) s += ` para ${TIPOS[tipo]}`;
+  if (m2) s += tipo ? ` de unos ${m2} m²` : ` para unos ${m2} m²`;
+  s += '.';
+  const det = [];
+  if (ac && ac !== ACABS[0]) det.push(`Acabado: ${ac}`);
+  if (co && co !== COLS[0]) det.push(`Tono: ${co}`);
+  if (det.length) s += '\n' + det.join(' · ');
+  if (msg) s += '\n' + msg;
+  return s + '\n\n(Mensaje desde la web)';
+}
+const bubble = $('#bubble'), sendWa = $('#sendWa');
+function updMsg() {
+  const m = buildMsg(), d = new Date();
+  bubble.innerHTML = esc(m) + `<time>${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')} ✓✓</time>`;
+  sendWa.href = wa(m);
+}
+form.addEventListener('input', updMsg); form.addEventListener('change', updMsg);
+form.addEventListener('submit', e => e.preventDefault());
+$('#copyMsg').addEventListener('click', () => copyText(buildMsg(), 'Mensaje copiado'));
+updMsg();
+
+/* ================= Fotos clicables fuera de la galería ================= */
+function clickable(sel) {
+  const els = $$(sel); const list = els.map(e => PH.get(e.dataset.photo)).filter(Boolean);
+  els.forEach(el => { el.style.cursor = 'zoom-in'; el.addEventListener('click', () => openLB(list, list.findIndex(g => g[0] === el.dataset.photo), el.querySelector('img'))); });
+}
+clickable('#procTrack .step'); clickable('#collage2 .ph');
+
+/* ================= Juntas de piedra de fondo en secciones ================= */
+$$('[data-joints]').forEach(sec => {
+  const seed = +sec.dataset.joints || 7, glow = sec.hasAttribute('data-glow');
+  const base = document.createElement('canvas'); base.className = 'joints'; base.setAttribute('aria-hidden', 'true'); sec.prepend(base);
+  let g = null; if (glow) { g = document.createElement('canvas'); g.className = 'joints joints--glow'; g.setAttribute('aria-hidden', 'true'); base.after(g); }
+  let lastW = 0, lastH = 0;
+  const draw = () => {
+    const W = sec.clientWidth, H = sec.clientHeight; if (!W || (Math.abs(W - lastW) < 2 && Math.abs(H - lastH) < 40)) return; lastW = W; lastH = H;
+    const cells = stoneCells(W, H, W < 700 ? 80 : 112, mulberry32(seed)).map(p => insetPoly(p, 4)).filter(Boolean);
+    [[base, .085, 1.1], ...(g ? [[g, .8, 1.5]] : [])].forEach(([c, al, lw]) => {
+      c.width = W; c.height = H; const x = c.getContext('2d');
+      x.globalAlpha = al; x.strokeStyle = '#E2AC4C'; x.lineWidth = lw; x.lineJoin = 'round';
+      x.beginPath(); cells.forEach(p => roundPoly(x, p, 12)); x.stroke();
+    });
+  };
+  let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(draw, 160); }).observe(sec);
+  if (g && FINE && !RM) sec.addEventListener('pointermove', e => { const r = sec.getBoundingClientRect(); sec.style.setProperty('--mx', (e.clientX - r.left) + 'px'); sec.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+  else if (g) g.remove();
+});
+
+/* ================= Muestrario con fotos reales ================= */
+(function sim() {
+  const stage = $('#simStage'), cv = $('#simCv'), ctx = cv.getContext('2d');
+  const cur = { m: 'piedra', v: 0 };
+  const imgs = new Map(), cache = new Map();
+  let W = 0, H = 0, k = 1, tex = null, raf = 0, pointer = null, played = false;
+  const load = key => { if (key === 'fresco') return Promise.resolve(null); if (!imgs.has(key)) imgs.set(key, new Promise(res => { const im = new Image(); im.decoding = 'async'; im.onload = () => res(im); im.onerror = () => res(null); im.src = IMG('m-' + key); })); return imgs.get(key); };
+  async function texFor(key) {
+    const ck = key + '|' + W; if (cache.has(ck)) return cache.get(ck);
+    const im = await load(key), c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+    if (im) {
+      const s = Math.max(W / im.naturalWidth, H / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+      x.imageSmoothingQuality = 'high'; x.drawImage(im, (W - dw) / 2, (H - dh) / 2, dw, dh);
+      const v = x.createRadialGradient(W / 2, H * .45, Math.min(W, H) * .3, W / 2, H / 2, Math.max(W, H) * .78);
+      v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.38)'); x.fillStyle = v; x.fillRect(0, 0, W, H);
+    } else { x.fillStyle = '#6d6c68'; x.fillRect(0, 0, W, H); }
+    cache.set(ck, c); return c;
+  }
+  function size() {
+    const r = stage.getBoundingClientRect(); if (!r.width) return false;
+    const dpr = Math.min(2, devicePixelRatio || 1, 1600 / r.width), nw = Math.round(r.width * dpr), nh = Math.round(r.height * dpr);
+    if (nw === W && nh === H) return false; W = cv.width = nw; H = cv.height = nh; k = W / 900; cache.clear(); return true;
+  }
+  function drawFinal() {
+    if (!tex) return;
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.drawImage(tex, 0, 0);
+    if (pointer) {
+      ctx.globalCompositeOperation = 'soft-light';
+      const g = ctx.createRadialGradient(pointer[0], pointer[1], 0, pointer[0], pointer[1], 320 * k);
+      g.addColorStop(0, 'rgba(255,255,255,.55)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.globalCompositeOperation = 'source-over';
+    }
+  }
+  // Transición: se colocan moldes uno a uno y al levantarlos aparece la nueva muestra
+  function stamp(from, to) {
+    tex = to; cancelAnimationFrame(raf); raf = 0;
+    if (RM || !from) { drawFinal(); return; }
+    const cols = W / H > 1.2 ? 4 : 3, rows = 3, mw = W / cols, mh = H / rows, mats = [];
+    for (let r = 0; r < rows; r++) for (let c0 = 0; c0 < cols; c0++) { const c = r % 2 ? cols - 1 - c0 : c0; mats.push({ x: c * mw, y: r * mh, w: mw, h: mh }); }
+    const dur = 520, gap = 85, t0 = performance.now();
+    const frame = now => {
+      const t = now - t0; let done = true;
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.drawImage(from, 0, 0);
+      mats.forEach((m, i) => { const p = clamp((t - i * gap) / dur, 0, 1); if (p >= .45) ctx.drawImage(to, m.x, m.y, m.w, m.h, m.x, m.y, m.w, m.h); });
+      mats.forEach((m, i) => {
+        const p = clamp((t - i * gap) / dur, 0, 1); if (p < 1) done = false; if (p <= 0 || p >= 1) return;
+        const down = p < .45, a = down ? easeOut(p / .45) : 1 - easeIn((p - .45) / .55);
+        const sc = down ? 1.14 - .14 * easeOut(p / .45) : 1 + .06 * ((p - .45) / .55);
+        ctx.save(); ctx.translate(m.x + m.w / 2, m.y + m.h / 2); ctx.scale(sc, sc); ctx.globalAlpha = a * .85;
+        ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = (6 + (sc - 1) * 160) * k; ctx.shadowOffsetY = (3 + (sc - 1) * 90) * k;
+        ctx.beginPath(); rrect(ctx, -m.w / 2 + 4 * k, -m.h / 2 + 4 * k, m.w - 8 * k, m.h - 8 * k, 12 * k); ctx.fillStyle = '#2B2D30'; ctx.fill();
+        ctx.shadowColor = 'transparent';
+        ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = a * .3; ctx.drawImage(to, m.x, m.y, m.w, m.h, -m.w / 2, -m.h / 2, m.w, m.h);
+        ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = a; ctx.fillStyle = '#55595D';
+        ctx.beginPath(); rrect(ctx, -22 * k, -m.h / 2 + 12 * k, 44 * k, 10 * k, 5 * k); rrect(ctx, -22 * k, m.h / 2 - 22 * k, 44 * k, 10 * k, 5 * k); ctx.fill();
+        ctx.restore();
+      });
+      if (!done) raf = requestAnimationFrame(frame); else { raf = 0; drawFinal(); }
+    };
+    raf = requestAnimationFrame(frame);
+  }
+  async function select(m, v, animate = true) {
+    const from = tex; cur.m = m; cur.v = v; updUI();
+    const to = await texFor(MATS[m].v[v][1]);
+    if (cur.m !== m || cur.v !== v) return;
+    stamp(animate ? from : null, to);
+  }
+
+  const cm = $('#ctrlMolde'), tones = $('#simTones');
+  const radioKeys = (parent, btn) => btn.addEventListener('keydown', e => {
+    if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(e.key)) return; e.preventDefault();
+    const opts = [...parent.querySelectorAll('[role=radio]')], i = opts.indexOf(btn), n = opts[(i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length];
+    n.focus(); n.click();
+  });
+  Object.entries(MATS).forEach(([key, M]) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'opt'; b.setAttribute('role', 'radio'); b.dataset.key = key;
+    b.innerHTML = `<img src="${IMG('sw-' + M.v[0][1])}" alt="" width="112" height="112" loading="lazy">${M.name}`;
+    b.addEventListener('click', () => { if (cur.m !== key) select(key, 0); });
+    radioKeys(cm, b); cm.appendChild(b);
+  });
+  const simWa = $('#simWa');
+  function updUI() {
+    const M = MATS[cur.m], [tone, , job] = M.v[cur.v];
+    $$('.opt', cm).forEach(b => { const on = b.dataset.key === cur.m; b.setAttribute('aria-checked', on); b.tabIndex = on ? 0 : -1; });
+    if (tones.dataset.m !== cur.m) {
+      tones.dataset.m = cur.m; tones.innerHTML = '';
+      M.v.forEach(([t, key], i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.title = t; b.setAttribute('aria-label', `Tono ${t}`);
+        b.innerHTML = `<img src="${IMG('sw-' + key)}" alt="" width="112" height="112">`;
+        b.addEventListener('click', () => { if (cur.v !== i) select(cur.m, i); });
+        radioKeys(tones, b); tones.appendChild(b);
+      });
+    }
+    [...tones.children].forEach((b, i) => { b.setAttribute('aria-checked', i === cur.v); b.tabIndex = i === cur.v ? 0 : -1; });
+    $('#simName').textContent = M.name; $('#simDesc').textContent = M.desc;
+    $('#simTone').textContent = M.v.length > 1 ? `Tono ${tone.toLowerCase()} · ${M.v.length} tonos` : `Tono ${tone.toLowerCase()}`;
+    $('#simCap').textContent = `${M.name} · ${tone}`;
+    cv.setAttribute('aria-label', `Muestra real de ${M.name}, tono ${tone}`);
+    simWa.href = wa(`Hola, buenas. He visto en vuestra página web el acabado ${M.name} en tono ${tone.toLowerCase()} y me interesa. ¿Me podéis dar presupuesto?`);
+  }
+  $('#simPip').innerHTML = '<svg aria-hidden="true" style="width:18px;height:18px;margin-left:6px"><use href="#i-plus"/></svg><span>Ver la obra entera</span>';
+  $('#simPip').addEventListener('click', () => {
+    const M = MATS[cur.m], list = M.v.map(v => PH.get(v[2])).filter(Boolean);
+    openLB(list, cur.v, null);
+  });
+  $('#simAgain').addEventListener('click', async () => { const from = await texFor('fresco'); stamp(from, tex); });
+  $('#simToForm').addEventListener('click', () => {
+    const M = MATS[cur.m]; fAcab.value = M.name; fColor.value = M.v[cur.v][0]; updMsg();
+    $('#contacto').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' });
+    toast('Acabado añadido a tu mensaje');
+  });
+  stage.addEventListener('pointermove', e => { if (raf || e.pointerType !== 'mouse') return; const r = cv.getBoundingClientRect(); pointer = [(e.clientX - r.left) / r.width * W, (e.clientY - r.top) / r.height * H]; drawFinal(); });
+  stage.addEventListener('pointerleave', () => { pointer = null; if (!raf) drawFinal(); });
+
+  updUI(); size(); select('piedra', 0, false);
+  let rsT; new ResizeObserver(() => { clearTimeout(rsT); rsT = setTimeout(async () => { if (size()) { cancelAnimationFrame(raf); raf = 0; tex = await texFor(MATS[cur.m].v[cur.v][1]); drawFinal(); } }, 140); }).observe(stage);
+  new IntersectionObserver(async (es, io) => {
+    if (!es[0].isIntersecting || played) return; played = true; io.disconnect();
+    if (RM) return; const from = await texFor('fresco'), to = await texFor(MATS[cur.m].v[cur.v][1]); setTimeout(() => stamp(from, to), 200);
+  }, { threshold: .5 }).observe(stage);
+})();
+
+})();
+
+</script>
+
+</body></html>
